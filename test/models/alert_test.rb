@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: alerts
@@ -9,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-require "test_helper"
+require 'test_helper'
 
 class AlertTest < ActiveSupport::TestCase
   # test "the truth" do
