@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.1'
 
 gem 'bootsnap', require: false
+gem 'httparty'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -13,6 +14,8 @@ gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.0'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'strip_attributes'
+gem 'strong_migrations'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -22,6 +25,7 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'rubocop', '0.90' # vscode issue with anything >= 0.91
+  gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'web-console'
 end

@@ -1,0 +1,46 @@
+sources:
+  conditions:
+    class: ConditionsSource
+    attributes:
+      am_min_height:
+        name: AM Min Height
+        type: Number
+      am_max_height:
+        name: AM Max Height
+        type: Number
+      am_rating:
+        name: AM Rating
+        type: String
+        values:
+          - NONE
+          - FLAT
+          - VERY_POOR
+          - POOR
+          - POOR_TO_FAIR
+          - FAIR
+          - FAIR_TO_GOOD
+          - GOOD
+          - VERY_GOOD
+          - GOOD_TO_EPIC
+          - EPIC
+      pm_min_height:
+        name: PM Min Height
+        type: Number
+      pm_max_height:
+        name: PM Max Height
+        type: Number
+      pm_rating:
+        name: PM Rating
+        type: String
+        values:
+          - NONE
+          - FLAT
+          - VERY_POOR
+          - POOR
+          - POOR_TO_FAIR
+          - FAIR
+          - FAIR_TO_GOOD
+          - GOOD
+          - VERY_GOOD
+          - GOOD_TO_EPIC
+          - EPIC
