@@ -2,9 +2,6 @@
 
 module Alerts
   class ConditionsSource < BaseSource
-    include HTTParty
-    base_uri 'services.surfline.com'
-
     def am_min_height(day)
       conditions[day].dig('am', 'minHeight')
     end
@@ -33,18 +30,6 @@ module Alerts
 
     def conditions
       @conditions ||= self.class.get('/kbyg/regions/forecasts/conditions', options)
-    end
-
-    def options
-      { query: locations_params.merge(days: 6) }
-    end
-
-    def location_params
-      if @region_id
-        { regionId: @region_id }
-      else
-        { spotId: @spot_id }
-      end
     end
   end
 end
