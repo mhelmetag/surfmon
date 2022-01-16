@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative './base_source'
+
 module Alerts
   class ConditionsSource < BaseSource
     def am_min_height(day)
@@ -29,7 +31,12 @@ module Alerts
     private
 
     def conditions
-      @conditions ||= self.class.get('/kbyg/regions/forecasts/conditions', options)
+      @conditions ||= begin
+        response = self.class.get('/kbyg/regions/forecasts/conditions', options)
+        raise Alerts::SourceError, 'Received a non-200 code from surfline' unless response.code == 200
+
+        response.parsed_response.dig('data', 'conditions')
+      end
     end
   end
 end
