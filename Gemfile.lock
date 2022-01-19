@@ -66,6 +66,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -98,6 +100,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -136,6 +140,7 @@ GEM
     parser (3.1.0.0)
       ast (~> 2.4.1)
     pg (1.2.3)
+    public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -233,6 +238,7 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
+  json-schema
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.1)

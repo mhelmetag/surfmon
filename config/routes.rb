@@ -2,4 +2,6 @@
 
 Rails.application.routes.draw do
   root 'alerts#index'
+
+  resources :alerts
 end

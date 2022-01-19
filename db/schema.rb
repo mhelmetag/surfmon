@@ -10,15 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_211_221_043_625) do
+ActiveRecord::Schema.define(version: 2022_01_19_075015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "alerts", force: :cascade do |t|
-    t.string "name"
-    t.jsonb "conditions"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "spot_id"
+    t.string "subregion_id"
   end
+
+  create_table "conditions", force: :cascade do |t|
+    t.string "source", null: false
+    t.string "field", null: false
+    t.string "comparator", null: false
+    t.string "value", null: false
+    t.bigint "alert_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["alert_id"], name: "index_conditions_on_alert_id"
+  end
+
 end

@@ -1,0 +1,49 @@
+<%= form_with model: @alert do |form| %>
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <%= form.text_field :name, class: 'input', placeholder: 'A cool alert name' %>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Region ID</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Text input">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Subregion ID</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Text input">
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <%= fields_for :condition, @alert.condition do |condition_form| %>
+      <div class="control">
+        <div class="select">
+          <%= condition_form.select :source, @alerts_configuration.sources, value: 'conditions', readonly: true %>
+        </div>
+      </div>
+      <div class="control">
+        <div class="select">
+          <%= condition_form.select :field, @alerts_configuration.source_attributes('conditions') %>
+        </div>
+      </div>
+      <div class="control">
+        <div class="select">
+          <%= condition_form.select :comparator, Condition::COMPARATORS.map { |c| [c, c] } %>
+         </div>
+      </div> 
+      <div class="control">
+        <%= condition_form.text_field :value, class: 'input' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= form.submit class: 'button is-link' %>
+    </div>
+  </div>
+<% end %>

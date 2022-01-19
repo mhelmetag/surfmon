@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Surfmon</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +11,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <%= image_tag 'logo.png' %>
+          <p class="is-size-5" style="margin-left: 0.5rem">Surfmon<p>
+        </a>
+      </div>
+    </nav>
+
+    <div class="container" style="min-height: 80vh">
+      <%= yield %>
+    </div>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>Built by Maxworld Technologies</p>
+      </div>
+    </footer>
   </body>
 </html>

@@ -9,6 +9,7 @@ gem 'bootsnap', require: false
 gem 'httparty'
 gem 'importmap-rails'
 gem 'jbuilder'
+gem 'json-schema'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.1'

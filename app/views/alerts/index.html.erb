@@ -1,6 +1,20 @@
-<h1>Alerts</h1>
-<ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Condition</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @alerts.each do |alert| %>
-    <li><%= alert.name %></li>
+    <tr>
+      <td><%= alert.name %></td>
+      <td><%= alert.spot_id ? alert.spot_id : alert.subregion_id %></td>
+      <td><%= alert.condition %></td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
+  
+
