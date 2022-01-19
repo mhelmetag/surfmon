@@ -1,20 +1,26 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>ID</th>
-      <th>Condition</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="columns is-multiline">
+  <div class="column is-full">
+    <%= link_to 'New Alert', new_alert_path, class: 'button is-primary' %>
+  </div>
+
   <% @alerts.each do |alert| %>
-    <tr>
-      <td><%= alert.name %></td>
-      <td><%= alert.spot_id ? alert.spot_id : alert.subregion_id %></td>
-      <td><%= alert.condition %></td>
-    </tr>
+    <div class="column is-full">
+      <div class="card">
+        <div class="card-content">
+          <p class="title">
+            <%= alert.name %> (<%= alert.spot_id ? alert.spot_id : alert.subregion_id %>)
+          </p>
+          <p class="subtitle">
+            <%= alert.condition %>
+          </p>
+        </div>
+        <footer class="card-footer">
+          <%= link_to 'Edit', edit_alert_path(alert), class: 'card-footer-item' %>
+          <%= link_to 'Delete', alert_path(alert), class: 'card-footer-item', data: { 'turbo-method': :delete, confirm: 'Are you sure?' } %>
+        </footer>
+      </div>
+    </div>
   <% end %>
-  </tbody>
-</table>
+</div>
   
 

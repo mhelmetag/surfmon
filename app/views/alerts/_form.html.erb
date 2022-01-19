@@ -6,18 +6,19 @@
     </div>
   </div>
   <div class="field">
-    <label class="label">Region ID</label>
+    <label class="label">Spot ID</label>
     <div class="control">
-      <input class="input" type="text" placeholder="Text input">
+      <%= form.text_field :spot_id, class: 'input', placeholder: '5842041f4e65fad6a7708814' %>
     </div>
   </div>
   <div class="field">
     <label class="label">Subregion ID</label>
     <div class="control">
-      <input class="input" type="text" placeholder="Text input">
+      <%= form.text_field :subregion_id, class: 'input', placeholder: '58581a836630e24c4487900c' %>
     </div>
   </div>
 
+  <label class="label">Condition</label>
   <div class="field is-grouped">
     <%= fields_for :condition, @alert.condition do |condition_form| %>
       <div class="control">
@@ -36,7 +37,7 @@
          </div>
       </div> 
       <div class="control">
-        <%= condition_form.text_field :value, class: 'input' %>
+        <%= condition_form.text_field :value, class: 'input', placeholder: '5' %>
       </div>
     <% end %>
   </div>
