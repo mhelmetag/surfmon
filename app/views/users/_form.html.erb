@@ -1,0 +1,14 @@
+<%= form_with model: @user do |form| %>
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control">
+      <%= form.email_field :name, class: 'input', placeholder: 'dudebro@example.com' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= form.submit class: 'button is-link' %>
+    </div>
+  </div>
+<% end %>

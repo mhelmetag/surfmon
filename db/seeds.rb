@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+user = { email: 'dudebro@example.com' }
+
+user = User.create!(user)
+
 alerts = [
   {
     name: 'Really good SB',
@@ -9,7 +13,8 @@ alerts = [
       field: 'am_max_height',
       comparator: 'gt',
       value: '4'
-    }
+    },
+    user_id: user.id
   },
   {
     name: 'Overhead ventucky',
@@ -19,7 +24,8 @@ alerts = [
       field: 'am_rating',
       comparator: 'eq',
       value: 'GOOD'
-    }
+    },
+    user_id: user.id
   },
   {
     name: 'Sick Sunset',
@@ -29,10 +35,9 @@ alerts = [
       field: 'pm_max_height',
       comparator: 'gt',
       value: '5'
-    }
+    },
+    user_id: user.id
   }
 ]
 
-alerts.each do |alert|
-  Alert.create!(alert)
-end
+alerts.each { |alert| Alert.create!(alert) }

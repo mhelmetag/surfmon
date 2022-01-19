@@ -10,12 +10,19 @@
 #  updated_at   :datetime         not null
 #  spot_id      :string
 #  subregion_id :string
+#  user_id      :integer          not null
+#
+# Indexes
+#
+#  index_alerts_on_user_id  (user_id)
 #
 
 class Alert < ApplicationRecord
   validates_presence_of :name
   validate :either_spot_or_subregion
   validate :not_both_spot_or_subregion
+
+  belongs_to :user
 
   has_one :condition, dependent: :destroy
   accepts_nested_attributes_for :condition

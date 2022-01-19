@@ -1,0 +1,15 @@
+<%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path do |f| %>
+  <% email_field_name = :"passwordless[#{@email_field}]" %>
+
+  <div class="field">
+    <div class="control">
+      <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.submit I18n.t('passwordless.sessions.new.submit'), class: 'button is-link' %>
+    </div>
+  </div>
+<% end %>

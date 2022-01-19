@@ -14,10 +14,10 @@ class AlertsController < ApplicationController
   end
 
   def create
-    @alert = Alert.new(alert_attributes)
+    @alert = Alert.new(alert_params)
 
     if @alert.save
-      redirect_to alerts_path
+      redirect_to alerts_path, flash: { notice: 'Alert created' }
     else
       render 'new'
     end
@@ -30,8 +30,8 @@ class AlertsController < ApplicationController
   def update
     @alert = Alert.find(params[:id])
 
-    if @alert.update(alert_attributes)
-      redirect_to alerts_path
+    if @alert.update(alert_params)
+      redirect_to alerts_path, flash: { notice: 'Alert updated' }
     else
       render 'edit'
     end
@@ -42,7 +42,7 @@ class AlertsController < ApplicationController
 
     @alert.destroy
 
-    redirect_to alerts_path
+    redirect_to alerts_path, flash: { notice: 'Alert deleted' }
   end
 
   private
@@ -51,7 +51,7 @@ class AlertsController < ApplicationController
     @alerts_configuration = Alerts::Configuration.new
   end
 
-  def alert_attributes
+  def alert_params
     params.require(:alert).permit(:name, condition_attributes: %i[source field comparator value alert_id])
   end
 end

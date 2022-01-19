@@ -4,6 +4,7 @@ AllCops:
     - db/schema.rb
     - node_modules/**/*
     - vendor/**/* # for circleci mostly
+    - bin/*
 
 Style/Documentation:
   Enabled: false

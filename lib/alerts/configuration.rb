@@ -14,6 +14,10 @@ module Alerts
       configuration.dig('sources', source, 'attributes').keys
     end
 
+    def attribute_values(source, attribute)
+      configuration.dig('sources', source, 'attributes', attribute, 'values') || []
+    end
+
     private
 
     def configuration
