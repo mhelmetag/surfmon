@@ -15,5 +15,5 @@ class User < ApplicationRecord
 
   passwordless_with :email
 
-  has_many :alerts
+  has_many :alerts, dependent: :destroy
 end

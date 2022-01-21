@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in @user
-      redirect_to @user, flash: { notice: 'Welcome!' }
+      redirect_to alerts_path, flash: { notice: 'Welcome!' }
     else
       render :new
     end

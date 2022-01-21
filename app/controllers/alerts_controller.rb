@@ -6,11 +6,17 @@ class AlertsController < ApplicationController
   before_action :set_alerts_configuration
 
   def index
-    @alerts = Alert.all.preload(:condition)
+    @alerts =
+      if current_user
+        current_user.alerts.preload(:condition)
+      else
+        Alert.none
+      end
   end
 
   def new
     @alert = Alert.new
+    @alert.condition = Condition.new
   end
 
   def create
@@ -52,6 +58,12 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:name, condition_attributes: %i[source field comparator value alert_id])
+    params.require(:alert).permit(
+      :user_id,
+      :name,
+      :spot_id,
+      :subregion_id,
+      condition_attributes: %i[source field comparator value]
+    )
   end
 end

@@ -1,24 +1,36 @@
 <div class="columns is-multiline">
-  <div class="column is-full">
-    <%= link_to 'New Alert', new_alert_path, class: 'button is-primary' %>
-  </div>
-
-  <% @alerts.each do |alert| %>
+  <% if current_user %>
     <div class="column is-full">
-      <div class="card">
-        <div class="card-content">
-          <p class="title">
-            <%= alert.name %> (<%= alert.spot_id ? alert.spot_id : alert.subregion_id %>)
-          </p>
-          <p class="subtitle">
-            <%= alert.condition %>
-          </p>
+      <%= link_to 'New Alert', new_alert_path, class: 'button is-primary' %>
+    </div>
+
+    <% if @alerts.present? %>
+      <% @alerts.each do |alert| %>
+        <div class="column is-full">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">
+                <%= alert.name %> (<%= alert.spot_id ? alert.spot_id : alert.subregion_id %>)
+              </p>
+              <p class="subtitle">
+                <%= alert.condition %>
+              </p>
+            </div>
+            <footer class="card-footer">
+              <%= link_to 'Edit', edit_alert_path(alert), class: 'card-footer-item' %>
+              <%= link_to 'Delete', alert_path(alert), class: 'card-footer-item', data: { 'turbo-method': :delete, confirm: 'Are you sure?' } %>
+            </footer>
+          </div>
         </div>
-        <footer class="card-footer">
-          <%= link_to 'Edit', edit_alert_path(alert), class: 'card-footer-item' %>
-          <%= link_to 'Delete', alert_path(alert), class: 'card-footer-item', data: { 'turbo-method': :delete, confirm: 'Are you sure?' } %>
-        </footer>
+      <% end %>
+    <% else %>
+      <div>
+        <p>Try creating some alerts</p>
       </div>
+    <% end %>
+  <% else %>
+    <div>
+      <p>Sign up or log in</p>
     </div>
   <% end %>
 </div>

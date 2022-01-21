@@ -1,4 +1,6 @@
 <%= form_with model: @alert do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
   <div class="field">
     <label class="label">Name</label>
     <div class="control">
@@ -20,7 +22,7 @@
 
   <label class="label">Condition</label>
   <div class="field is-grouped">
-    <%= fields_for :condition, @alert.condition do |condition_form| %>
+    <%= form.fields_for :condition do |condition_form| %>
       <div class="control">
         <div class="select">
           <%= condition_form.select :source, @alerts_configuration.sources, value: 'conditions', readonly: true %>
@@ -37,7 +39,6 @@
          </div>
       </div> 
       <div class="control">
-        <%# It'd be cool if this was dynamic based on the field using attribute type and values %>
         <%= condition_form.text_field :value, class: 'input', placeholder: '5' %>
       </div>
     <% end %>

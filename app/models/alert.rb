@@ -30,16 +30,16 @@ class Alert < ApplicationRecord
   private
 
   def either_spot_or_subregion
-    return if spot_id || subregion_id
+    return if spot_id.present? || subregion_id.present?
 
-    errors.add(:subregion_id, 'Either spot ID or subregion ID')
-    errors.add(:spot_id, 'Either spot ID or subregion ID')
+    errors.add(:subregion_id, 'Either spot ID or subregion ID') if spot_id.present?
+    errors.add(:spot_id, 'Either spot ID or subregion ID') if subregion_id.present?
   end
 
   def not_both_spot_or_subregion
-    return unless spot_id && subregion_id
+    return unless spot_id.present? && subregion_id.present?
 
-    errors.add(:subregion_id, 'Either spot ID or subregion ID') if spot_id
-    errors.add(:spot_id, 'Either spot ID or subregion ID') if subregion_id
+    errors.add(:subregion_id, 'Not both spot ID and subregion ID')
+    errors.add(:spot_id, 'Not both spot ID and subregion ID')
   end
 end
