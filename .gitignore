@@ -32,3 +32,6 @@
 
 # Editors
 .vscode/*
+
+# dotenv
+.env
