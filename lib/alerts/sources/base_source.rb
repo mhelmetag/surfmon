@@ -19,7 +19,7 @@ module Alerts
     attr_reader :subregion_id, :spot_id
 
     def options
-      { query: location_params.merge(days: 6) }
+      { query: location_params.merge(days: 8) }
     end
 
     def location_params

@@ -1,13 +1,13 @@
 sources:
   conditions:
-    class: ConditionsSource
+    class: Alerts::ConditionsSource
     attributes:
       am_min_height:
         name: AM Min Height
-        type: Number
+        type: Integer
       am_max_height:
         name: AM Max Height
-        type: Number
+        type: Integer
       am_rating:
         name: AM Rating
         type: String
@@ -25,10 +25,10 @@ sources:
           - EPIC
       pm_min_height:
         name: PM Min Height
-        type: Number
+        type: Integer
       pm_max_height:
         name: PM Max Height
-        type: Number
+        type: Integer
       pm_rating:
         name: PM Rating
         type: String

@@ -32,3 +32,8 @@ group :development do
   gem 'rubocop-rails'
   gem 'web-console'
 end
+
+group :test do
+  gem 'timecop'
+  gem 'webmock'
+end

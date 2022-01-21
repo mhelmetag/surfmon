@@ -1,0 +1,232 @@
+{
+  "associated": {
+    "units": {
+      "temperature": "F",
+      "tideHeight": "FT",
+      "swellHeight": "FT",
+      "waveHeight": "FT",
+      "windSpeed": "KTS"
+    },
+    "utcOffset": -8
+  },
+  "data": {
+    "conditions": [
+      {
+        "timestamp": 1642665600,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-20",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "WNW swell drops off further through the day. Clean but shutdown for most through the AM high tide.",
+        "am": {
+          "maxHeight": 2,
+          "minHeight": 1,
+          "plus": false,
+          "humanRelation": "Knee to thigh high",
+          "occasionalHeight": 3,
+          "rating": "POOR_TO_FAIR"
+        },
+        "pm": {
+          "maxHeight": 1,
+          "minHeight": 0.5,
+          "plus": false,
+          "humanRelation": "Shin to knee high",
+          "occasionalHeight": null,
+          "rating": "POOR"
+        }
+      },
+      {
+        "timestamp": 1642752000,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-21",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "Old WNW swell bottoms out. New, longer period WNW swell gradually creeps up -- mainly through the afternoon. Nice potential for offshore flow in the morning then light NW winds PM.",
+        "am": {
+          "maxHeight": 2,
+          "minHeight": 1,
+          "plus": false,
+          "humanRelation": "Knee to thigh high",
+          "occasionalHeight": null,
+          "rating": "POOR_TO_FAIR"
+        },
+        "pm": {
+          "maxHeight": 3,
+          "minHeight": 2,
+          "plus": false,
+          "humanRelation": "Thigh to waist high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        }
+      },
+      {
+        "timestamp": 1642838400,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-22",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "Small but rideable new round of WNW swell tops out. Will be best early before the tide gets too full. Swirling wind could be an issue for spots closer to Ventura in the morning.",
+        "am": {
+          "maxHeight": 3,
+          "minHeight": 2,
+          "plus": true,
+          "humanRelation": "Waist to stomach high",
+          "occasionalHeight": 4,
+          "rating": "FAIR"
+        },
+        "pm": {
+          "maxHeight": 3,
+          "minHeight": 2,
+          "plus": true,
+          "humanRelation": "Waist to stomach high",
+          "occasionalHeight": 4,
+          "rating": "FAIR"
+        }
+      },
+      {
+        "timestamp": 1642924800,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-23",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "Lingering WNW swell in the morning. Will be best early before the tide gets too full. New, long period WNW swell creeping up late in the day.",
+        "am": {
+          "maxHeight": 3,
+          "minHeight": 2,
+          "plus": false,
+          "humanRelation": "Thigh to waist high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        },
+        "pm": {
+          "maxHeight": 2,
+          "minHeight": 1,
+          "plus": false,
+          "humanRelation": "Knee to thigh high",
+          "occasionalHeight": 3,
+          "rating": "POOR_TO_FAIR"
+        }
+      },
+      {
+        "timestamp": 1643011200,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-24",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "Old WNW swell lingers and new, longer period WNW swell expected to gradually come up through the day. Wind is light in the morning but could cooperate for the afternoon when the best size shows.",
+        "am": {
+          "maxHeight": 4,
+          "minHeight": 3,
+          "plus": false,
+          "humanRelation": "Waist to chest high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        },
+        "pm": {
+          "maxHeight": 4,
+          "minHeight": 3,
+          "plus": true,
+          "humanRelation": "Waist to shoulder high",
+          "occasionalHeight": 5,
+          "rating": "FAIR_TO_GOOD"
+        }
+      },
+      {
+        "timestamp": 1643097600,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-25",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "Nice pulse of WNW swell tops out. Tide is pretty favorable all day and wind could be too.",
+        "am": {
+          "maxHeight": 5,
+          "minHeight": 3,
+          "plus": false,
+          "humanRelation": "Waist to head high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        },
+        "pm": {
+          "maxHeight": 5,
+          "minHeight": 3,
+          "plus": false,
+          "humanRelation": "Waist to head high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        }
+      },
+      {
+        "timestamp": 1643184000,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-26",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "Refresh of WNW swell should level things off, down a notch from Tuesday. Shape still a little walled at times. Could be another favorable morning for conditions and the afternoon doesn't look too bad.",
+        "am": {
+          "maxHeight": 4,
+          "minHeight": 3,
+          "plus": false,
+          "humanRelation": "Waist to chest high",
+          "occasionalHeight": null,
+          "rating": "FAIR_TO_GOOD"
+        },
+        "pm": {
+          "maxHeight": 4,
+          "minHeight": 3,
+          "plus": false,
+          "humanRelation": "Waist to chest high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        }
+      },
+      {
+        "timestamp": 1643270400,
+        "utcOffset": -8,
+        "forecastDay": "2022-01-27",
+        "forecaster": {
+          "name": "Kevin Wallis",
+          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
+        },
+        "human": true,
+        "observation": "Continued decrease in surf as WNW swell trends down. Conditions currently look best in the morning. Stay tuned. ",
+        "am": {
+          "maxHeight": 3,
+          "minHeight": 2,
+          "plus": true,
+          "humanRelation": "Waist to stomach high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        },
+        "pm": {
+          "maxHeight": 3,
+          "minHeight": 2,
+          "plus": false,
+          "humanRelation": "Thigh to waist high",
+          "occasionalHeight": null,
+          "rating": "FAIR"
+        }
+      }
+    ]
+  }
+}

@@ -6,7 +6,7 @@ module Alerts
       configuration['sources'].keys
     end
 
-    def source_class(source)
+    def source_klass(source)
       configuration.dig('sources', source, 'class')
     end
 
@@ -14,8 +14,12 @@ module Alerts
       configuration.dig('sources', source, 'attributes').keys
     end
 
+    def attribute_type(source, attribute)
+      configuration.dig('sources', source, 'attributes', attribute, 'type')
+    end
+
     def attribute_values(source, attribute)
-      configuration.dig('sources', source, 'attributes', attribute, 'values') || []
+      configuration.dig('sources', source, 'attributes', attribute, 'values')
     end
 
     private

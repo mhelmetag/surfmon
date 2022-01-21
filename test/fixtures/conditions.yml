@@ -1,0 +1,13 @@
+conditions_am_min_height_gt_4:
+  alert: really_good_sb  
+  source: conditions
+  field: am_min_height
+  comparator: gt
+  value: 4
+
+conditions_am_rating_gt_fair:
+  alert: decent_sb
+  source: conditions
+  field: am_rating
+  comparator: gt
+  value: FAIR

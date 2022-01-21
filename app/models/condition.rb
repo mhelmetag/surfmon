@@ -25,7 +25,7 @@ class Condition < ApplicationRecord
 
   validates_presence_of :source, :field, :comparator, :value
   validates :source, inclusion: { in: Alerts::Configuration.new.sources }
-  # validates :field, inclusion: { in: Alerts::Configuration.new.source_attributes(source) }
+  validates :field, inclusion: { in: Alerts::Configuration.new.source_attributes('conditions') } # hardcode for now
   validates :comparator, inclusion: { in: COMPARATORS }
 
   strip_attributes
