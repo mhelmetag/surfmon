@@ -19,8 +19,9 @@
 
 class Alert < ApplicationRecord
   validates_presence_of :name
-  validate :either_spot_or_subregion
-  validate :not_both_spot_or_subregion
+  validate :spot_or_subregion
+
+  strip_attributes
 
   belongs_to :user
 
@@ -29,17 +30,10 @@ class Alert < ApplicationRecord
 
   private
 
-  def either_spot_or_subregion
-    return if spot_id.present? || subregion_id.present?
+  def spot_or_subregion
+    return if spot_id.present? || subregion_id.present? # either
+    return if spot_id.present? && subregion_id.present? # not both
 
-    errors.add(:subregion_id, 'Either spot ID or subregion ID') if spot_id.present?
-    errors.add(:spot_id, 'Either spot ID or subregion ID') if subregion_id.present?
-  end
-
-  def not_both_spot_or_subregion
-    return unless spot_id.present? && subregion_id.present?
-
-    errors.add(:subregion_id, 'Not both spot ID and subregion ID')
-    errors.add(:spot_id, 'Not both spot ID and subregion ID')
+    errors.add(:base, :spot_or_subregion, message: 'Spot ID or subregion ID must be present but not both')
   end
 end

@@ -1,3 +1,13 @@
+<% if @alert.errors.any? %>
+  <div class="notification is-danger">
+    <ul>
+      <% @alert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>
+
 <%= form_with model: @alert do |form| %>
   <%= form.hidden_field :user_id, value: current_user.id %>
 

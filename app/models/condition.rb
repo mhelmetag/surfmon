@@ -28,6 +28,8 @@ class Condition < ApplicationRecord
   # validates :field, inclusion: { in: Alerts::Configuration.new.source_attributes(source) }
   validates :comparator, inclusion: { in: COMPARATORS }
 
+  strip_attributes
+
   belongs_to :alert
 
   def to_s

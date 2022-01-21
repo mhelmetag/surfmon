@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       sign_in @user
       redirect_to alerts_path, flash: { notice: 'Welcome!' }
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
