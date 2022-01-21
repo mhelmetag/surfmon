@@ -1,3 +1,13 @@
+<% if @user.errors.any? %>
+  <div class="notification is-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>
+
 <%= form_with model: @user do |form| %>
   <div class="field">
     <label class="label">Email</label>
