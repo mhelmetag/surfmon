@@ -32,11 +32,32 @@ module Alerts
 
     def conditions
       @conditions ||= begin
-        response = self.class.get('/kbyg/regions/forecasts/conditions', options)
+        response = HTTParty.get('/kbyg/regions/forecasts/conditions', options, headers)
         raise Alerts::SourceError, 'Received a non-200 code from surfline' unless response.code == 200
 
         response.parsed_response.dig('data', 'conditions')
       end
+    end
+
+    def options
+      { query: location_params.merge(days: 8) }
+    end
+
+    def location_params
+      if subregion_id.present?
+        { subregionId: subregion_id }
+      else
+        { spotId: spot_id }
+      end
+    end
+
+    def headers
+      {
+        Accept: 'application/json',
+        # rubocop:disable Layout/LineLength
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36'
+        # rubocop:enable Layout/LineLength
+      }
     end
   end
 end

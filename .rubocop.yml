@@ -28,6 +28,7 @@ Layout/MultilineMethodCallIndentation:
 Metrics/BlockLength:
   Exclude:
     - lib/tasks/**/*
+    - config/**/*
 
 Style/MixinUsage:
   Exclude:
