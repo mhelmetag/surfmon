@@ -33,7 +33,7 @@ module Alerts
     def conditions
       @conditions ||= begin
         response = self.class.get('/kbyg/regions/forecasts/conditions', options)
-        raise Alerts::SourceError, 'Received a non-200 code from surfline' unless response.code == 200
+        binding.pry unless response.code == 200
 
         response.parsed_response.dig('data', 'conditions')
       end

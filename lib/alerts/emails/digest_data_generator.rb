@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require 'alerts/configuration'
-Dir['alerts/sources/*.rb'].each { |file| require file }
-
-require 'minitest/autorun'
+Dir[Rails.root.join('lib/alerts/sources/*.rb')].each { |file| require file }
 
 module Alerts
   module Emails
@@ -21,8 +19,11 @@ module Alerts
 
             [alert.id, days_of_week]
           end
+          filtered_alert_ids_and_days_of_week = alert_ids_and_days_of_week.select do |_alert_id, days_of_week|
+            days_of_week.any?
+          end
 
-          [user.id, alert_ids_and_days_of_week]
+          [user.id, filtered_alert_ids_and_days_of_week]
         end
       end
 
@@ -42,7 +43,7 @@ module Alerts
           day_value = source.public_send(condition.field, day)
           converted_day_value = convert_value(condition, day_value)
 
-          days_of_week << day if comparison_lambda(condition).call(converted_day_value)
+          days_of_week << day if converted_day_value.present? && comparison_lambda(condition).call(converted_day_value)
         end
 
         days_of_week

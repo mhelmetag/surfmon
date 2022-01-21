@@ -25,7 +25,7 @@ module Alerts
     private
 
     def configuration
-      @configuration ||= YAML.safe_load(File.read(File.join(Rails.root, 'config/alerts.yml')))
+      @configuration ||= YAML.safe_load(File.read(Rails.root.join('config/alerts.yml')))
     end
   end
 end

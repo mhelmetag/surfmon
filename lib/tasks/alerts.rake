@@ -24,11 +24,8 @@ namespace :alerts do
 
     data.each do |user_id, alert_ids_and_days_of_week|
       user = User.find(user_id)
-      should_send_email = alert_ids_and_days_of_week.any? do |_alert_id, days_of_week|
-        days_of_week.any?
-      end
 
-      AlertMailer.digest(user.id, alert_ids_and_days_of_week).deliver_now if should_send_email
+      AlertMailer.digest(user.id, alert_ids_and_days_of_week).deliver_now if alert_ids_and_days_of_week.present?
     end
   end
 end

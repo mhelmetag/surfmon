@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'minitest/autorun'
 
 require 'alerts/emails/digest_data_generator'
 require 'alerts/sources/conditions_source'
@@ -53,7 +54,7 @@ module Alerts
         Alerts::ConditionsSource.stub :new, mock do
           generator = DigestDataGenerator.new
 
-          expected = [[users(:dudebro).id, [[alerts(:really_good_sb).id, []], [alerts(:decent_sb).id, [6]]]]]
+          expected = [[users(:dudebro).id, [[alerts(:decent_sb).id, [6]]]]]
           assert_equal(expected, generator.generate)
         end
       end

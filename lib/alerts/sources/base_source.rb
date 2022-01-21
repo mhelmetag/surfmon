@@ -23,7 +23,7 @@ module Alerts
     end
 
     def location_params
-      if subregion_id
+      if subregion_id.present?
         { subregionId: subregion_id }
       else
         { spotId: spot_id }
