@@ -1,6 +1,6 @@
 sources:
   conditions:
-    class: Alerts::ConditionsSource
+    class: Alerts::Sources::ConditionsSource
     attributes:
       am_min_height:
         name: AM Min Height

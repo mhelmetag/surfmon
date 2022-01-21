@@ -51,7 +51,7 @@ module Alerts
 
       test '#generate' do
         mock = MockConditionsSource.new
-        Alerts::ConditionsSource.stub :new, mock do
+        Alerts::Sources::ConditionsSource.stub :new, mock do
           generator = DigestDataGenerator.new
 
           expected = [[users(:dudebro).id, [[alerts(:decent_sb).id, [6]]]]]
