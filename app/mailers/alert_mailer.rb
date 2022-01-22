@@ -10,4 +10,9 @@ class AlertMailer < ApplicationMailer
     end
     mail(to: @user.email, subject: 'Surfmon weekly surf alerts')
   end
+
+  def digest_error(user_id)
+    @user = User.find(user_id)
+    mail(to: @user.email, subject: 'Ouch! Surfmon bailed creating your weekly surf alerts')
+  end
 end

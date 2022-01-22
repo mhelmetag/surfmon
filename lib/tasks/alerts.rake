@@ -20,12 +20,15 @@ namespace :alerts do
 
     require 'alerts/emails/digest_data_generator'
 
-    data = Alerts::Emails::DigestDataGenerator.new.generate
+    users = User.all
 
-    data.each do |user_id, alert_ids_and_days_of_week|
-      user = User.find(user_id)
+    users.each do |user|
+      alert_ids_and_days_of_week = Alerts::Emails::DigestDataGenerator.new(user.id).generate
 
-      AlertMailer.digest(user.id, alert_ids_and_days_of_week).deliver_now if alert_ids_and_days_of_week.present?
+      AlertMailer.digest(user.id, alert_ids_and_days_of_week).deliver_now if alert_ids_and_days_of_week.any?
+    rescue StandardError => e
+      Rollbar.error(e, "Digest generation failed for User##{user.id}")
+      AlertMailer.digest_error(user.id).deliver_now
     end
   end
 end

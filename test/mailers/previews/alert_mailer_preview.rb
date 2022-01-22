@@ -7,4 +7,9 @@ class AlertMailerPreview < ActionMailer::Preview
     alert_ids_and_days_of_week = [[Alert.first.id, [1, 2, 3]], [Alert.second.id, [4, 6]]]
     AlertMailer.digest(user_id, alert_ids_and_days_of_week)
   end
+
+  def digest_error
+    user_id = User.first.id
+    AlertMailer.digest_error(user_id)
+  end
 end

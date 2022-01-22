@@ -52,9 +52,9 @@ module Alerts
       test '#generate' do
         mock = MockConditionsSource.new
         Alerts::Sources::ConditionsSource.stub :new, mock do
-          generator = DigestDataGenerator.new
+          generator = DigestDataGenerator.new(users(:dudebro).id)
 
-          expected = [[users(:dudebro).id, [[alerts(:decent_sb).id, [6]]]]]
+          expected = [[alerts(:decent_sb).id, [6]]]
           assert_equal(expected, generator.generate)
         end
       end

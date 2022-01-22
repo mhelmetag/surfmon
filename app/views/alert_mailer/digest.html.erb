@@ -1,8 +1,9 @@
 <h1>Surfmon weekly surf alerts</h1>
+<p>Get stoked! Swell is in your future...</p>
 <ul>
   <% @alert_names_and_days_of_week.each do |alert_name, days_of_week| %>
     <li>
-      <strong><%= alert_name %><strong>: <%= days_of_week %>
+      <strong><%= alert_name %></strong>: <%= days_of_week %>
     </li>
   <% end %>
 </ul>

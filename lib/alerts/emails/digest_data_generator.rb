@@ -6,30 +6,34 @@ Dir[Rails.root.join('lib/alerts/sources/*.rb')].each { |file| require file }
 module Alerts
   module Emails
     class DigestDataGenerator
-      def initialize
+      def initialize(user_id)
+        @user = User.find(user_id)
         @configuration = Alerts::Configuration.new
       end
 
       def generate
-        User.all.map do |user|
-          alerts = user.alerts.preload(:condition)
+        alerts = user.alerts.preload(:condition)
 
-          alert_ids_and_days_of_week = alerts.map do |alert|
-            days_of_week = resolve_condition(alert) || []
-
-            [alert.id, days_of_week]
-          end
-          filtered_alert_ids_and_days_of_week = alert_ids_and_days_of_week.select do |_alert_id, days_of_week|
-            days_of_week.any?
-          end
-
-          [user.id, filtered_alert_ids_and_days_of_week]
-        end
+        filtered_alert_ids_and_days_of_week(alerts)
       end
 
       private
 
-      attr_reader :configuration
+      attr_reader :user, :configuration
+
+      def filtered_alert_ids_and_days_of_week(alerts)
+        alert_ids_and_days_of_week(alerts).select do |_alert_id, days_of_week|
+          days_of_week.any?
+        end
+      end
+
+      def alert_ids_and_days_of_week(alerts)
+        alerts.map do |alert|
+          days_of_week = resolve_condition(alert) || []
+
+          [alert.id, days_of_week]
+        end
+      end
 
       def resolve_condition(alert)
         condition = alert.condition
