@@ -24,14 +24,14 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'brakeman'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails'
   gem 'pry-byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   gem 'annotate'
+  gem 'brakeman'
+  gem 'dotenv-rails'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'web-console'
@@ -39,5 +39,4 @@ end
 
 group :test do
   gem 'timecop'
-  gem 'webmock'
 end
