@@ -1,6 +1,8 @@
+<%- title 'Surfmon > Log In' %>
+
 <section class="section" style="max-width: 60vw">
   <div class="container">
-    <h2 class="is-size-2">Login</h2>
+    <h2 class="is-size-2">Log In</h2>
     <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: false } do |f| %>
       <% email_field_name = :"passwordless[#{@email_field}]" %>
 

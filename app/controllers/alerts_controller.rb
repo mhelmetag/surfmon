@@ -15,12 +15,12 @@ class AlertsController < ApplicationController
   end
 
   def new
-    @alert = Alert.new
+    @alert = current_user.alerts.new
     @alert.condition = Condition.new
   end
 
   def create
-    @alert = Alert.new(alert_params)
+    @alert = current_user.alerts.new(alert_params)
 
     if @alert.save
       redirect_to alerts_path, flash: { notice: 'Alert created' }
@@ -30,11 +30,11 @@ class AlertsController < ApplicationController
   end
 
   def edit
-    @alert = Alert.find(params[:id])
+    @alert = current_user.alerts.find(params[:id])
   end
 
   def update
-    @alert = Alert.find(params[:id])
+    @alert = current_user.alerts.find(params[:id])
 
     if @alert.update(alert_params)
       redirect_to alerts_path, flash: { notice: 'Alert updated' }
@@ -44,7 +44,7 @@ class AlertsController < ApplicationController
   end
 
   def destroy
-    @alert = Alert.find(params[:id])
+    @alert = current_user.alerts.find(params[:id])
 
     if @alert.destroy
       redirect_to alerts_path, flash: { notice: 'Alert deleted' }
@@ -61,7 +61,6 @@ class AlertsController < ApplicationController
 
   def alert_params
     params.require(:alert).permit(
-      :user_id,
       :name,
       :spot_id,
       :subregion_id,
