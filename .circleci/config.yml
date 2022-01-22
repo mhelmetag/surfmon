@@ -2,7 +2,7 @@ version: 2.1
 
 references:
   default_docker_ruby_executor: &default_docker_ruby_executor
-    image: circleci/ruby:3.1.0-buster-node
+    image: cimg/ruby:3.1.0
     environment:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
@@ -13,7 +13,7 @@ references:
       PGPASSWORD: ""
       RAILS_ENV: test
   postgres: &postgres
-    image: circleci/postgres:14-alpine
+    image: cimg/postgres:14.1
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: surfmon_test
@@ -51,7 +51,7 @@ jobs:
           command: bundle check || bundle install
       - run:
           name: Rubocop check
-          command: git diff-tree -r --no-commit-id --name-only HEAD origin/master | xargs -r bundle exec rubocop --force-exclusion
+          command: git diff-tree -r --no-commit-id --name-only HEAD origin/main | xargs -r bundle exec rubocop --force-exclusion
       - run:
           name: Brakeman check
           command: bundle exec brakeman
@@ -66,7 +66,7 @@ jobs:
           command: bundle exec rails test
 
 workflows:
-  build_test_deploy:
+  build_test:
     jobs:
       - build
       - test:
