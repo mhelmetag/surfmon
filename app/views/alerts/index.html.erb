@@ -11,7 +11,7 @@
             <div class="card">
               <div class="card-content">
                 <p class="title">
-                  <%= alert.name %> (<%= alert.spot_id ? alert.spot_id : alert.subregion_id %>)
+                  <%= alert.name %>
                 </p>
                 <p class="subtitle">
                   <%= alert.condition %>
@@ -26,12 +26,12 @@
         <% end %>
       <% else %>
         <div>
-          <p>Try creating some alerts...</p>
+          <p class="is-size-4">Try creating some alerts...</p>
         </div>
       <% end %>
     <% else %>
       <div>
-        <p>Please sign up or log in...</p>
+        <p class="is-size-4">Please sign up or log in...</p>
       </div>
     <% end %>
   </div>

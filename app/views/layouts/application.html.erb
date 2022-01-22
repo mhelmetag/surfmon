@@ -13,23 +13,35 @@
   </head>
 
   <body>
-    <nav class="navbar">
+    <nav class="navbar has-shadow">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <%= image_tag 'logo.png' %>
-          <p class="is-size-5 ml-2">Surfmon<p>
+          <p class="is-size-5 ml-2">Surfmon</p>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" onclick="toggleNavBar()">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
       </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <% if current_user %>
-              <%= link_to 'Log Out', auth.sign_out_path, class: 'button is-light' %>
-            <% else %>
-              <%= link_to 'Sign Up', new_user_path, class: 'button is-primary' %>
-              <%= link_to 'Log In', auth.sign_in_path, class: 'button is-light' %>
-            <% end %>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start">
+          <%= link_to 'Alerts', alerts_path, class: 'navbar-item' %>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <% if current_user %>
+                <%= link_to 'Log Out', auth.sign_out_path, class: 'button is-light' %>
+              <% else %>
+                <%= link_to 'Sign Up', new_user_path, class: 'button is-primary' %>
+                <%= link_to 'Log In', auth.sign_in_path, class: 'button is-light' %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -41,7 +53,7 @@
 
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>Built by Maxworld Technologies</p>
+        <p>Built by <strong>Maxworld Technologies</strong></p>
         <p>Issues? Email me at <a href="mailto:support@maxworld.tech">support@maxworld.tech</a></p>
       </div>
     </footer>

@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   passwordless_for :users, at: '/', as: :auth
 
-  root 'alerts#index'
+  root 'pages#home'
 
   resources :alerts
   resources :users, only: %i[new create]
