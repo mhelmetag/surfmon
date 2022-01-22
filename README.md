@@ -7,7 +7,7 @@ Surf monitoring
 You'll need:
 
 - Ruby 3.1.0
-- PostgreSQL (I'm using 12)
+- PostgreSQL (I'm using 14)
 
 Then you can run to setup:
 

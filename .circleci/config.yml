@@ -1,0 +1,74 @@
+version: 2.1
+
+references:
+  default_docker_ruby_executor: &default_docker_ruby_executor
+    image: circleci/ruby:3.1.0-buster-node
+    environment:
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      BUNDLER_VERSION: 2.1.4
+      PGHOST: 127.0.0.1
+      PGUSER: postgres
+      PGPASSWORD: ""
+      RAILS_ENV: test
+  postgres: &postgres
+    image: circleci/postgres:14-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: surfmon_test
+      POSTGRES_PASSWORD: ""
+
+jobs:
+  build:
+    docker:
+      - *default_docker_ruby_executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - risk-benefit-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - risk-benefit-bundle-v2-
+      - run:
+          name: Bundle install
+          command: bundle check || bundle install
+      - save_cache:
+          key: risk-benefit-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+  test:
+    docker:
+      - *default_docker_ruby_executor
+      - *postgres
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - risk-benefit-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - risk-benefit-bundle-v2-
+      - run:
+          name: Bundle install
+          command: bundle check || bundle install
+      - run:
+          name: Rubocop check
+          command: git diff-tree -r --no-commit-id --name-only HEAD origin/master | xargs -r bundle exec rubocop --force-exclusion
+      - run:
+          name: Brakeman check
+          command: bundle exec brakeman
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: Rails test
+          command: bundle exec rails test
+
+workflows:
+  build_test_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
