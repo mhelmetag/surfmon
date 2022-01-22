@@ -2,7 +2,7 @@ version: 2.1
 
 references:
   default_docker_ruby_executor: &default_docker_ruby_executor
-    image: circleci/ruby:3.1.0-buster-node
+    image: cimg/ruby:3.1.0
     environment:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
@@ -13,7 +13,7 @@ references:
       PGPASSWORD: ""
       RAILS_ENV: test
   postgres: &postgres
-    image: circleci/postgres:14-alpine
+    image: cimg/postgres:14.1
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: surfmon_test
