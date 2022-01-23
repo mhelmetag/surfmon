@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-user = { email: 'dudebro@example.com' }
-
-user = User.create!(user)
+users = [{ email: 'dudebro@example.com' }, { email: 'surfchick@example.com' }]
 
 alerts = [
   {
@@ -13,8 +11,7 @@ alerts = [
       field: 'am_min_height',
       comparator: 'gt',
       value: '3'
-    },
-    user_id: user.id
+    }
   },
   {
     name: 'Good ventucky',
@@ -24,9 +21,12 @@ alerts = [
       field: 'am_rating',
       comparator: 'gt',
       value: 'FAIR'
-    },
-    user_id: user.id
+    }
   }
 ]
 
-alerts.each { |alert| Alert.create!(alert) }
+users.each do |user|
+  user = User.create!(user)
+
+  alerts.each { |alert| Alert.create!(alert.merge(user:)) }
+end
