@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if verify_recaptcha(action: 'sign_up', minimum_score: 0.3) && @user.save
+    if @user.save
       sign_in @user
       redirect_to alerts_path, flash: { notice: 'Welcome!' }
     else

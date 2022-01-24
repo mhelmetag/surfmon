@@ -9,8 +9,6 @@
 <%end%>
 
 <%= form_with model: @user do |form| %>
-  <%= recaptcha_v3(action: 'sign_up') %>
-
   <div class="field">
     <label class="label">Email</label>
     <div class="control">
