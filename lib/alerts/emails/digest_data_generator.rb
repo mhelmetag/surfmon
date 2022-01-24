@@ -67,13 +67,13 @@ module Alerts
       end
 
       def convert_value(condition, value)
-        attribute_type = configuration.attribute_type(condition.source, condition.field)
+        field_type = configuration.field_type(condition.source, condition.field)
 
-        case attribute_type
-        when 'String'
-          attribute_values = configuration.attribute_values(condition.source, condition.field)
+        case field_type
+        when 'OrderedList'
+          field_values = configuration.field_values(condition.source, condition.field)
 
-          attribute_values.find_index(value)
+          field_values.find_index(value)
         when 'Integer'
           value.to_i
         else

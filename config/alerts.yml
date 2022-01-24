@@ -1,3 +1,8 @@
+# sources need a class (source class)
+# and attributes
+# attribute types can be Integer or OrderedList
+# OrderedList attributes need to have values sorted by the value (lowest to highest)
+
 sources:
   conditions:
     class: Alerts::Sources::ConditionsSource
@@ -10,7 +15,7 @@ sources:
         type: Integer
       am_rating:
         name: AM Rating
-        type: String
+        type: OrderedList
         values:
           - NONE
           - FLAT
@@ -31,7 +36,7 @@ sources:
         type: Integer
       pm_rating:
         name: PM Rating
-        type: String
+        type: OrderedList
         values:
           - NONE
           - FLAT
