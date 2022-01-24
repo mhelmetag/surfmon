@@ -30,7 +30,6 @@ end
 group :development do
   gem 'annotate'
   gem 'brakeman'
-  gem 'dotenv-rails'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'web-console'
