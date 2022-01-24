@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
+    if challenge_accepted? && @user.save
       sign_in @user
       redirect_to alerts_path, flash: { notice: 'Welcome!' }
     else
@@ -20,5 +20,14 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email)
+  end
+
+  def challenge_accepted?
+    if params[:challenge].strip == 'Kelly Slater'
+      true
+    else
+      @user.errors.add(:base, 'Challenge failed')
+      false
+    end
   end
 end
