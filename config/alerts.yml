@@ -49,3 +49,15 @@ sources:
           - VERY_GOOD
           - GOOD_TO_EPIC
           - EPIC
+  wave:
+    class: Alerts::Sources::WaveSource
+    attributes:
+      direction:
+        name: Direction
+        type: Float
+      height:
+        name: Height
+        type: Float
+      period:
+        name: Period
+        type: Integer

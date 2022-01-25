@@ -33,12 +33,12 @@
     <%= form.fields_for :condition do |condition_form| %>
       <div class="control">
         <div class="select">
-          <%= condition_form.select :source, @alerts_configuration.sources, value: 'conditions', readonly: true %>
+          <%= condition_form.select :source, @alerts_configuration.sources, value: @alerts_configuration.sources.first %>
         </div>
       </div>
       <div class="control">
         <div class="select">
-          <%= condition_form.select :field, @alerts_configuration.source_fields('conditions') %>
+          <%= condition_form.select :field, @alerts_configuration.source_fields('conditions'), value: @alerts_configuration.source_fields('conditions').first %>
         </div>
       </div>
       <div class="control">

@@ -4,44 +4,32 @@ require 'alerts/sources/base_source'
 
 module Alerts
   module Sources
-    class ConditionsSource < BaseSource
-      def am_min_height(day)
-        conditions.dig(day, 'am', 'minHeight')
+    class WaveSource < BaseSource
+      def direction(day)
+        wave.dig(day, 'swells', 0, 'direction')
       end
 
-      def am_max_height(day)
-        conditions.dig(day, 'am', 'maxHeight')
+      def height(day)
+        wave.dig(day, 'swells', 0, 'height')
       end
 
-      def am_rating(day)
-        conditions.dig(day, 'am', 'rating')
-      end
-
-      def pm_min_height(day)
-        conditions.dig(day, 'pm', 'minHeight')
-      end
-
-      def pm_max_height(day)
-        conditions.dig(day, 'pm', 'maxHeight')
-      end
-
-      def pm_rating(day)
-        conditions.dig(day, 'pm', 'rating')
+      def period(day)
+        wave.dig(day, 'swells', 0, 'period')
       end
 
       private
 
-      def conditions
-        @conditions ||= begin
-          response = HTTParty.get('https://services.surfline.com/kbyg/regions/forecasts/conditions', options)
+      def wave
+        @wave ||= begin
+          response = HTTParty.get('https://services.surfline.com/kbyg/regions/forecasts/wave', options)
           raise Alerts::Sources::SourceError, 'Received a non-200 code from surfline' unless response.code == 200
 
-          response.parsed_response.dig('data', 'conditions')
+          response.parsed_response.dig('data', 'wave')
         end
       end
 
       def options
-        { query: location_params.merge(days: 8), headers: headers }
+        { query: location_params.merge(days: 8, intervalHours: 24), headers: headers }
       end
 
       def location_params
