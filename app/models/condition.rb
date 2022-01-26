@@ -9,7 +9,7 @@
 #  field      :string           not null
 #  comparator :string           not null
 #  value      :string           not null
-#  alert_id   :integer
+#  alert_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -34,7 +34,12 @@ class Condition < ApplicationRecord
   belongs_to :alert
 
   def to_s
-    [source, field, comparator, value].join(' ')
+    [
+      I18n.t(['configuration', 'sources', source, 'name'].join('.')),
+      I18n.t(['configuration', 'sources', source, 'fields', field, 'name'].join('.')),
+      I18n.t(comparator, scope: 'conditions.comparators'),
+      value
+    ].join(' ')
   end
 
   private

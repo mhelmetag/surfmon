@@ -16,12 +16,6 @@
     </div>
   </div>
   <div class="field">
-    <label class="label">Spot ID</label>
-    <div class="control">
-      <%= form.text_field :spot_id, class: 'input', placeholder: '5842041f4e65fad6a7708814' %>
-    </div>
-  </div>
-  <div class="field">
     <label class="label">Subregion ID</label>
     <div class="control">
       <%= form.text_field :subregion_id, class: 'input', placeholder: '58581a836630e24c4487900c' %>
@@ -33,17 +27,17 @@
     <%= form.fields_for :condition do |condition_form| %>
       <div class="control">
         <div class="select">
-          <%= condition_form.select :source, @alerts_configuration.sources, value: 'conditions', readonly: true %>
+          <%= condition_form.select :source, [['Conditions', 'conditions']], value: 'conditions' %>
         </div>
       </div>
       <div class="control">
         <div class="select">
-          <%= condition_form.select :field, @alerts_configuration.source_fields('conditions') %>
+          <%= condition_form.select :field, @alerts_configuration.source_fields('conditions').map { |field| [I18n.t(['configuration', 'sources', 'conditions', 'fields', field, 'name'].join('.')), field] }, value: @alerts_configuration.source_fields('conditions').first %>
         </div>
       </div>
       <div class="control">
         <div class="select">
-          <%= condition_form.select :comparator, Condition::COMPARATORS.map { |c| [c, c] } %>
+          <%= condition_form.select :comparator, Condition::COMPARATORS.map { |c| [I18n.t(c, scope: 'conditions.comparators'), c] } %>
          </div>
       </div> 
       <div class="control">

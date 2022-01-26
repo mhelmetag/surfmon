@@ -7,7 +7,7 @@ require 'alerts/configuration'
 module Alerts
   class ConfigurationTest < ActiveSupport::TestCase
     test '#sources' do
-      assert_equal(['conditions'], Alerts::Configuration.new.sources)
+      assert_equal(%w[conditions wave], Alerts::Configuration.new.sources)
     end
 
     test '#source_klass' do

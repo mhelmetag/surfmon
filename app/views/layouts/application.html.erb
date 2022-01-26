@@ -13,14 +13,14 @@
   </head>
 
   <body>
-    <nav class="navbar has-shadow">
+    <nav class="navbar has-shadow" data-controller="navbar">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <%= image_tag 'logo.png' %>
           <p class="is-size-5 ml-2">Surfmon</p>
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" onclick="toggleNavBar()">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" data-action="click->navbar#toggle">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>

@@ -6,15 +6,12 @@
 sources:
   conditions:
     class: Alerts::Sources::ConditionsSource
-    attributes:
+    fields:
       am_min_height:
-        name: AM Min Height
         type: Integer
       am_max_height:
-        name: AM Max Height
         type: Integer
       am_rating:
-        name: AM Rating
         type: OrderedList
         values:
           - NONE
@@ -49,3 +46,12 @@ sources:
           - VERY_GOOD
           - GOOD_TO_EPIC
           - EPIC
+  wave:
+    class: Alerts::Sources::WaveSource
+    fields:
+      direction:
+        type: Float
+      height:
+        type: Float
+      period:
+        type: Integer

@@ -62,7 +62,6 @@ class AlertsController < ApplicationController
   def alert_params
     params.require(:alert).permit(
       :name,
-      :spot_id,
       :subregion_id,
       condition_attributes: %i[source field comparator value]
     )

@@ -6,27 +6,27 @@ module Alerts
   module Sources
     class ConditionsSource < BaseSource
       def am_min_height(day)
-        conditions[day].dig('am', 'minHeight')
+        conditions.dig(day, 'am', 'minHeight')
       end
 
       def am_max_height(day)
-        conditions[day].dig('am', 'maxHeight')
+        conditions.dig(day, 'am', 'maxHeight')
       end
 
       def am_rating(day)
-        conditions[day].dig('am', 'rating')
+        conditions.dig(day, 'am', 'rating')
       end
 
       def pm_min_height(day)
-        conditions[day].dig('pm', 'minHeight')
+        conditions.dig(day, 'pm', 'minHeight')
       end
 
       def pm_max_height(day)
-        conditions[day].dig('pm', 'maxHeight')
+        conditions.dig(day, 'pm', 'maxHeight')
       end
 
       def pm_rating(day)
-        conditions[day].dig('pm', 'rating')
+        conditions.dig(day, 'pm', 'rating')
       end
 
       private
@@ -41,15 +41,7 @@ module Alerts
       end
 
       def options
-        { query: location_params.merge(days: 8), headers: headers }
-      end
-
-      def location_params
-        if subregion_id.present?
-          { subregionId: subregion_id }
-        else
-          { spotId: spot_id }
-        end
+        { query: { subregionId: subregion_id, days: 8 }, headers: headers }
       end
 
       def headers

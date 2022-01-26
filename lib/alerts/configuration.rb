@@ -11,15 +11,15 @@ module Alerts
     end
 
     def source_fields(source)
-      configuration.dig('sources', source, 'attributes')&.keys || []
+      configuration.dig('sources', source, 'fields')&.keys || []
     end
 
     def field_type(source, attribute)
-      configuration.dig('sources', source, 'attributes', attribute, 'type')
+      configuration.dig('sources', source, 'fields', attribute, 'type')
     end
 
     def field_values(source, attribute)
-      configuration.dig('sources', source, 'attributes', attribute, 'values') || []
+      configuration.dig('sources', source, 'fields', attribute, 'values') || []
     end
 
     private
