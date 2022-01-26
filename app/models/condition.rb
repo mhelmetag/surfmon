@@ -34,7 +34,12 @@ class Condition < ApplicationRecord
   belongs_to :alert
 
   def to_s
-    [source, field, comparator, value].join(' ')
+    [
+      I18n.t(['configuration', 'sources', source, 'name'].join('.')),
+      I18n.t(['configuration', 'sources', source, 'fields', field, 'name'].join('.')),
+      I18n.t(comparator, scope: 'conditions.comparators'),
+      value
+    ].join(' ')
   end
 
   private
