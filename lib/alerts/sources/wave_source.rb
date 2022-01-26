@@ -29,15 +29,7 @@ module Alerts
       end
 
       def options
-        { query: location_params.merge(days: 8, intervalHours: 24), headers: headers }
-      end
-
-      def location_params
-        if subregion_id.present?
-          { subregionId: subregion_id }
-        else
-          { spotId: spot_id }
-        end
+        { query: { subregionId: subregion_id, days: 8 }, headers: headers }
       end
 
       def headers

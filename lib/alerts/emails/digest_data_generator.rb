@@ -38,7 +38,7 @@ module Alerts
       def resolve_condition(alert)
         condition = alert.condition
         source_class = configuration.source_klass(condition.source).constantize
-        source = source_class.new(subregion_id: alert.subregion_id, spot_id: alert.spot_id)
+        source = source_class.new(alert.subregion_id)
 
         days_of_week = []
 
