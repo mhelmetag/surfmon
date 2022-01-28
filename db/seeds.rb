@@ -6,22 +6,26 @@ alerts = [
   {
     name: 'Decent SB',
     subregion_id: '58581a836630e24c44878fd4',
-    condition_attributes: {
-      source: 'conditions',
-      field: 'am_min_height',
-      comparator: 'gt',
-      value: '3'
-    }
+    conditions_attributes: [
+      '0' => {
+        source: 'conditions',
+        field: 'am_min_height',
+        comparator: 'gt',
+        value: '3'
+      }
+    ]
   },
   {
     name: 'Good ventucky',
     subregion_id: '58581a836630e24c4487900c',
-    condition_attributes: {
-      source: 'conditions',
-      field: 'am_rating',
-      comparator: 'gt',
-      value: 'FAIR'
-    }
+    conditions_attributes: [
+      '0' => {
+        source: 'conditions',
+        field: 'am_rating',
+        comparator: 'gt',
+        value: 'FAIR'
+      }
+    ]
   }
 ]
 

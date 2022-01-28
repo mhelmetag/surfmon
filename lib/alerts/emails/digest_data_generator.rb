@@ -36,7 +36,7 @@ module Alerts
       end
 
       def resolve_condition(alert)
-        condition = alert.condition
+        condition = alert.conditions.first
         source_class = configuration.source_klass(condition.source).constantize
         source = source_class.new(alert.subregion_id)
 

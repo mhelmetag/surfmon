@@ -23,6 +23,6 @@ class Alert < ApplicationRecord
 
   belongs_to :user
 
-  has_one :condition, dependent: :destroy
-  accepts_nested_attributes_for :condition
+  has_many :conditions, dependent: :destroy
+  accepts_nested_attributes_for :conditions
 end

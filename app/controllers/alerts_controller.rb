@@ -8,7 +8,7 @@ class AlertsController < ApplicationController
   def index
     @alerts =
       if current_user
-        current_user.alerts.preload(:condition)
+        current_user.alerts.preload(:conditions)
       else
         Alert.none
       end
@@ -16,7 +16,7 @@ class AlertsController < ApplicationController
 
   def new
     @alert = current_user.alerts.new
-    @alert.condition = Condition.new
+    @alert.conditions.build
   end
 
   def create
@@ -31,6 +31,7 @@ class AlertsController < ApplicationController
 
   def edit
     @alert = current_user.alerts.find(params[:id])
+    @alert.conditions.build if @alert.conditions.blank?
   end
 
   def update
@@ -61,9 +62,10 @@ class AlertsController < ApplicationController
 
   def alert_params
     params.require(:alert).permit(
+      :id,
       :name,
       :subregion_id,
-      condition_attributes: %i[source field comparator value]
+      conditions_attributes: %i[id source field comparator value]
     )
   end
 end

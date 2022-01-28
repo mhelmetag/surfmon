@@ -22,9 +22,9 @@
     </div>
   </div>
 
-  <label class="label">Condition</label>
-  <div class="field is-grouped is-grouped-multiline">
-    <%= form.fields_for :condition do |condition_form| %>
+  <label class="label">Conditions</label>
+  <%= form.fields_for :conditions do |condition_form| %>
+    <div class="field is-grouped is-grouped-multiline">
       <div class="control">
         <div class="select">
           <%= condition_form.select :source, [['Conditions', 'conditions']], value: 'conditions' %>
@@ -38,13 +38,13 @@
       <div class="control">
         <div class="select">
           <%= condition_form.select :comparator, Condition::COMPARATORS.map { |c| [I18n.t(c, scope: 'conditions.comparators'), c] } %>
-         </div>
+        </div>
       </div> 
       <div class="control">
         <%= condition_form.text_field :value, class: 'input', placeholder: '5' %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div class="field">
     <div class="control">
