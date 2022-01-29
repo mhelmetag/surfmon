@@ -17,7 +17,7 @@ module ConditionsHelper
 
   def values_for_select(source, field)
     @alerts_configuration.field_values(source, field).map do |value|
-      [I18n.t(['configuration', 'sources', 'conditions', 'fields', field, value].join('.')), value]
+      [I18n.t(['configuration', 'sources', 'conditions', 'fields', field, 'values', value].join('.')), value]
     end
   end
 end

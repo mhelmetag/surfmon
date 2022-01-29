@@ -40,9 +40,7 @@
           <%= condition_form.select :comparator, comparators_for_select %>
         </div>
       </div> 
-      <div class="control">
-        <%= condition_form.text_field :value, class: 'input', placeholder: '5' %>
-      </div>
+      <%= render partial: 'value', locals: { condition_form: condition_form } %>
     </div>
   <% end %>
 

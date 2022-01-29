@@ -1,0 +1,17 @@
+<div class="control">
+  <% source = condition_form.object.source || 'conditions' %>
+  <% field = condition_form.object.field || 'am_min_height' %>
+  <% field_type = @alerts_configuration.field_type(source, field) %>
+  <% case field_type %>
+  <% when 'Integer' %>
+    <%= condition_form.number_field :value, class: 'input', placeholder: '5', in: 1..100, step: 1 %>
+  <% when 'OrderedList' %>
+    <div class="select">
+      <%= condition_form.select :value, values_for_select(source, field), value: values_for_select(source, field).first[1] %>
+    </div>
+  <% else %>
+    <div class="control">
+      <%= condition_form.text_field :value, class: 'input', placeholder: 'Whatever' %>
+    </div>
+  <% end %>
+</div>

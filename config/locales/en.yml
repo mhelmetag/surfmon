@@ -49,12 +49,36 @@ en:
             name: AM Max Height
           am_rating:
             name: AM Rating
+            values:
+              NONE: None
+              FLAT: Flat
+              VERY_POOR: Very Poor
+              POOR: Poor
+              POOR_TO_FAIR: Poor to Fair
+              FAIR: Fair
+              FAIR_TO_GOOD: Fair to Good
+              GOOD: Good
+              VERY_GOOD: Very Good
+              GOOD_TO_EPIC: Good to Epic
+              EPIC: Epic
           pm_min_height:
             name: PM Min Height
           pm_max_height:
             name: PM Max Height
           pm_rating:
             name: PM Rating
+            values:
+              NONE: None
+              FLAT: Flat
+              VERY_POOR: Very Poor
+              POOR: Poor
+              POOR_TO_FAIR: Poor to Fair
+              FAIR: Fair
+              FAIR_TO_GOOD: Fair to Good
+              GOOD: Good
+              VERY_GOOD: Very Good
+              GOOD_TO_EPIC: Good to Epic
+              EPIC: Epic
       wave:
         name: Wave
         fields:
