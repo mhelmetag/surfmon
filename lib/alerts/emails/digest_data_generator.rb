@@ -12,7 +12,7 @@ module Alerts
       end
 
       def generate
-        alerts = user.alerts.preload(:condition)
+        alerts = user.alerts.preload(:conditions)
 
         filtered_alert_ids_and_days_of_week(alerts)
       end
