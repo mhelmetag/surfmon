@@ -6,5 +6,10 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :alerts
+  resources :conditions, only: [] do
+    collection do
+      get :fields
+    end
+  end
   resources :users, only: %i[new create]
 end

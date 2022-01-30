@@ -6,7 +6,7 @@ module ConditionsHelper
   end
 
   def fields_for_select(source)
-    @alerts_configuration.source_fields('conditions').map do |field|
+    @alerts_configuration.source_fields(source).map do |field|
       [I18n.t(['configuration', 'sources', source, 'fields', field, 'name'].join('.')), field]
     end
   end

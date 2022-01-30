@@ -1,0 +1,18 @@
+<%= turbo_stream.update "alert_conditions_attributes_#{@id}_field" do %>
+  <% value = fields_for_select(@source).first[1]%>
+  <%= options_for_select(fields_for_select(@source), value:) %>
+<% end %>
+<%= turbo_stream.update "alert_conditions_#{@id}_value_input" do %>
+  <% field = fields_for_select(@source).first[1]%>
+  <% field_type = @alerts_configuration.field_type(@source, field) %>
+  <% case field_type %>
+  <% when 'Integer' %>
+    <%= number_field_tag :value, class: 'input', placeholder: '5', in: 1..100, step: 1 %>
+  <% when 'OrderedList' %>
+    <div class="select">
+      <%= select_tag :value, values_for_select(@source, field), value: field %>
+    </div>
+  <% else %>
+    <%= text_field_tag :value, class: 'input', placeholder: 'Whatever' %>
+  <% end %>
+<% end %>

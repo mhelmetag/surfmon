@@ -27,20 +27,22 @@
     <div class="field is-grouped is-grouped-multiline" data-controller="conditions">
       <div class="control">
         <div class="select">
-          <%= condition_form.select :source, sources_for_select, { value: 'conditions' }, { data: { action: 'change->conditions#change' } } %>
+          <%= condition_form.select :source, sources_for_select, { value: 'conditions' }, { data: { action: 'change->conditions#changeSource' } } %>
         </div>
       </div>
       <div class="control">
         <div class="select">
-          <%= condition_form.select :field, fields_for_select('conditions'), { value: 'am_max_height' }, { data: { action: 'change->conditions#changeField' } } %>
+          <%= condition_form.select :field, fields_for_select('conditions'), { value: 'am_max_height' } %>
         </div>
       </div>
       <div class="control">
         <div class="select">
           <%= condition_form.select :comparator, comparators_for_select %>
         </div>
-      </div> 
-      <%= render partial: 'value', locals: { condition_form: condition_form } %>
+      </div>
+      <div id="alert_conditions_<%= condition_form.object.id %>_value_input" class="control">
+        <%= render partial: 'value', locals: { condition_form: condition_form } %>
+      </div>
     </div>
   <% end %>
 
