@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :conditions, only: [] do
     collection do
       get :fields
+      get :value
     end
   end
   resources :users, only: %i[new create]

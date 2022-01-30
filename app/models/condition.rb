@@ -38,8 +38,18 @@ class Condition < ApplicationRecord
       I18n.t(['configuration', 'sources', source, 'name'].join('.')),
       I18n.t(['configuration', 'sources', source, 'fields', field, 'name'].join('.')),
       I18n.t(comparator, scope: 'conditions.comparators'),
-      value
+      localized_value
     ].join(' ')
+  end
+
+  def localized_value
+    field_type = configuration.field_type(source, field)
+
+    if field_type == 'OrderedList'
+      I18n.t(['configuration', 'sources', source, 'fields', field, 'values', value].join('.'))
+    else
+      value
+    end
   end
 
   private
@@ -47,8 +57,7 @@ class Condition < ApplicationRecord
   def valid_field
     source_fields = configuration.source_fields(source)
 
-    errors.add(:field, 'is an unknown value') unless source_fields.present?
-    errors.add(:field, 'is not included in the list') if source_fields.present? && !source_fields&.include?(field)
+    errors.add(:field, 'is not included in the list') unless source_fields&.include?(field)
   end
 
   def valid_value

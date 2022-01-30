@@ -6,8 +6,18 @@ class ConditionsController < ApplicationController
   before_action :set_alerts_configuration
 
   def fields
-    @id = params[:id]
+    @index = params[:index]
     @source = params[:source]
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
+  def value
+    @index = params[:index]
+    @source = params[:source]
+    @field = params[:field]
 
     respond_to do |format|
       format.turbo_stream

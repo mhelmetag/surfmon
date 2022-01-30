@@ -1,0 +1,3 @@
+<%= turbo_stream.update "alert_conditions_#{@index}_value_input" do %>
+  <% render partial: 'value', locals: { index: @index, source: @source, field: @field } %>
+<% end %>

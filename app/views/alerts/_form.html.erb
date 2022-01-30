@@ -32,7 +32,7 @@
       </div>
       <div class="control">
         <div class="select">
-          <%= condition_form.select :field, fields_for_select('conditions'), { value: 'am_max_height' } %>
+          <%= condition_form.select :field, fields_for_select('conditions'), { value: 'am_max_height' }, { data: { action: 'change->conditions#changeField' } } %>
         </div>
       </div>
       <div class="control">
@@ -40,7 +40,7 @@
           <%= condition_form.select :comparator, comparators_for_select %>
         </div>
       </div>
-      <div id="alert_conditions_<%= condition_form.object.id %>_value_input" class="control">
+      <div id="alert_conditions_<%= condition_form.index %>_value_input" class="control">
         <%= render partial: 'value', locals: { condition_form: condition_form } %>
       </div>
     </div>
