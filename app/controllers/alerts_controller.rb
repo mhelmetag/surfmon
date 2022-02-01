@@ -3,6 +3,7 @@
 require 'alerts/configuration'
 
 class AlertsController < ApplicationController
+  before_action :require_user!
   before_action :set_alerts_configuration
 
   def index

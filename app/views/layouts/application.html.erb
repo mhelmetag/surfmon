@@ -28,9 +28,11 @@
       </div>
 
       <div class="navbar-menu" id="navMenu">
-        <div class="navbar-start">
-          <%= link_to 'Alerts', alerts_path, class: 'navbar-item' %>
-        </div>
+        <% if current_user %>
+          <div class="navbar-start">
+            <%= link_to 'Alerts', alerts_path, class: 'navbar-item' %>
+          </div>
+        <% end %>
 
         <div class="navbar-end">
           <div class="navbar-item">
