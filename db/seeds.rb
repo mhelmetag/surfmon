@@ -7,7 +7,7 @@ alerts = [
     name: 'Decent SB',
     subregion_id: '58581a836630e24c44878fd4',
     conditions_attributes: [
-      '0' => {
+      {
         source: 'conditions',
         field: 'am_min_height',
         comparator: 'gt',
@@ -19,7 +19,7 @@ alerts = [
     name: 'Good ventucky',
     subregion_id: '58581a836630e24c4487900c',
     conditions_attributes: [
-      '0' => {
+      {
         source: 'conditions',
         field: 'am_rating',
         comparator: 'gt',
