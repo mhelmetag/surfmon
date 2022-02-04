@@ -29,7 +29,7 @@ module Alerts
       end
 
       def options
-        { query: { subregionId: subregion_id, days: 8 }, headers: }
+        { query: { subregionId: subregion_id, days: 8 }, headers: headers }
       end
 
       def headers

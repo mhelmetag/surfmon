@@ -33,3 +33,6 @@ Metrics/BlockLength:
 Style/MixinUsage:
   Exclude:
     - bin/*
+
+Style/HashSyntax:
+  Enabled: false
