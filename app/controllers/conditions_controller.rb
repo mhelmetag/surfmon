@@ -26,8 +26,13 @@ class ConditionsController < ApplicationController
   end
 
   def add
-    @alert = current_user.alerts.find(params[:alert_id])
-    @index = @alert.conditions.count # already +1 since not zero based
+    @index = params[:index]
+    @alert =
+      if params[:alert_id]
+        current_user.alerts.find(params[:alert_id])
+      else
+        current_user.alerts.new
+      end
     @condition = @alert.conditions.build
 
     respond_to do |format|

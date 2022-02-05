@@ -27,9 +27,17 @@ export default class extends Controller {
   add(event) {
     event.preventDefault();
 
-    const alertId = event.target.form.action.split("/")[4]; // http://localhost:3000/alerts/1
+    const index = document.getElementById("conditions").childElementCount; // already +1 for zero based index
+    const formUrl = new URL(event.target.form.action);
+    let addUrl;
+    if (formUrl.pathname === "/alerts") {
+      addUrl = `/conditions/add?index=${index}`;
+    } else {
+      const alertId = formUrl.pathname.split("/")[2]; // /alerts/1
+      addUrl = `/conditions/add?index=${index}&alert_id=${alertId}`;
+    }
 
-    get(`/conditions/add?alert_id=${alertId}`, {
+    get(addUrl, {
       responseKind: "turbo-stream",
     });
   }
