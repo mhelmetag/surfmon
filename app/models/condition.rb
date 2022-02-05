@@ -68,6 +68,8 @@ class Condition < ApplicationRecord
       valid_ordered_list
     when 'Integer'
       valid_integer
+    when 'Float'
+      valid_float
     else
       errors.add(:value, 'is an unknown value')
     end
@@ -83,6 +85,12 @@ class Condition < ApplicationRecord
     Integer(value)
   rescue ArgumentError
     errors.add(:value, 'must be an integer')
+  end
+
+  def valid_float
+    Float(value)
+  rescue ArgumentError
+    errors.add(:value, 'must be a decimal')
   end
 
   def configuration

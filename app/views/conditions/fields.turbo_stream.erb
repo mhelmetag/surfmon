@@ -2,6 +2,6 @@
 <%= turbo_stream.update "alert_conditions_attributes_#{@index}_field" do %>
   <%= options_for_select(fields_for_select(@source), value: field) %>
 <% end %>
-<%= turbo_stream.update "alert_conditions_#{@index}_value_input" do %>
-  <% render partial: 'value', locals: { index: @index, source: @source, field: field } %>
+<%= turbo_stream.replace "alert_conditions_attributes_#{@index}_value" do %>
+  <% render partial: 'value', locals: { index: @index, source: @source, field: @field, value: nil } %>
 <% end %>

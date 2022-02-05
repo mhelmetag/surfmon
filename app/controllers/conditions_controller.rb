@@ -8,6 +8,7 @@ class ConditionsController < ApplicationController
   def fields
     @index = params[:index]
     @source = params[:source]
+    @field = @alerts_configuration.source_fields(@source).first
 
     respond_to do |format|
       format.turbo_stream
