@@ -12,14 +12,34 @@
   <div class="field">
     <label class="label">Name</label>
     <div class="control">
-      <%= form.text_field :name, class: 'input', placeholder: 'A cool alert name' %>
+      <%= form.text_field :name, class: 'input', placeholder: 'A descriptive alert name' %>
     </div>
   </div>
-  <div class="field">
-    <label class="label">Subregion ID</label>
-    <div class="control">
-      <%= form.text_field :subregion_id, class: 'input', placeholder: '58581a836630e24c4487900c' %>
+
+  <div data-controller="subregions">
+    <label class="label">Subregion</label>
+
+    <div class="field is-grouped is-grouped-multiline" >
+      <div class="control">
+        <input type="text" class="input" placeholder="Search for a subregion..." data-action="input->subregions#search" />
+      </div>
+
+      <div class="control">
+        <div class="select">
+          <select id="subregions_select" data-action="change->subregions#select">
+            <option value="" selected>Search results show here...</option>
+          </select>
+        </div>
+      </div>
     </div>
+
+    <div class="field" >
+      <div class="control">
+        <%= form.text_field :subregion_name, class: 'input', readonly: true %>
+      </div>
+    </div>
+
+    <%= form.hidden_field :subregion_id %>
   </div>
 
   <label class="label">Conditions</label>

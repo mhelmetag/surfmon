@@ -52,6 +52,6 @@ sources:
       direction:
         type: Degree
       height:
-        type: Decimal
+        type: Float
       period:
         type: Integer

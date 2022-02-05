@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :alerts
-  resources :conditions, only: [] do
-    collection do
-      get :fields
-      get :value
-      get :add
-    end
-  end
+
+  # turbo conditions
+  get 'conditions/fields', to: 'conditions#fields'
+  get 'conditions/value', to:  'conditions#value'
+  get 'conditions/add', to: 'conditions#add'
+
+  # turbo search
+  get 'subregions/search', 'subregions#search'
+
   resources :users, only: %i[new create]
 end
