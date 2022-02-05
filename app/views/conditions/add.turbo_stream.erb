@@ -1,0 +1,5 @@
+<%= turbo_stream.append 'conditions' do %>
+  <% fields_for :alert, @alert do |form| %>
+    <%= render partial: 'conditions/form', locals: { form: form, index: @index, condition: @condition } %>
+  <% end %>
+<% end %>

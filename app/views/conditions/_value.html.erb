@@ -1,10 +1,10 @@
-<% value ||= nil %>
 <% id = "alert_conditions_attributes_#{index}_value" %>
 <% name = "alert[conditions_attributes][#{index}][value]" %>
 <% field_type = @alerts_configuration.field_type(source, field) %>
 <% case field_type %>
-<% when 'Integer' %>
-  <%= number_field_tag id, value, name: name, class: 'input', placeholder: '5', in: 1..100, step: 1 %>
+<% when 'Integer', 'Degree' %>
+  <% range = field_type == 'Integer' ? 1..100 : 0..360 %>
+  <%= number_field_tag id, value, name: name, class: 'input', placeholder: '5', in: range, step: 1 %>
 <% when 'Float' %>
   <%= number_field_tag id, value, name: name, class: 'input', placeholder: '1.5', in: 1..100, step: 0.1 %>
 <% when 'OrderedList' %>

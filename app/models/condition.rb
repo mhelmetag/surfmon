@@ -66,7 +66,7 @@ class Condition < ApplicationRecord
     case field_type
     when 'OrderedList'
       valid_ordered_list
-    when 'Integer'
+    when 'Integer', 'Degree' # degree is basically an Integer but just has a different range
       valid_integer
     when 'Float'
       valid_float
