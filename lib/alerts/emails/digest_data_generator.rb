@@ -29,28 +29,43 @@ module Alerts
 
       def alert_ids_and_days_of_week(alerts)
         alerts.map do |alert|
-          days_of_week = resolve_condition(alert) || []
+          days_of_week = resolve_conditions(alert) || []
 
           [alert.id, days_of_week]
         end
       end
 
-      def resolve_condition(alert)
-        condition = alert.conditions.first
-        source_class = configuration.source_klass(condition.source).constantize
-        source = source_class.new(alert.subregion_id)
+      def resolve_conditions(alert)
+        source_cache = build_source_cache(alert)
 
         days_of_week = []
 
-        # skip 0 since that's Sun
+        # skip 0 since that's Sun (today)
         (1..7).each do |day|
-          day_value = source.public_send(condition.field, day)
-          converted_day_value = convert_value(condition, day_value)
+          is_matching_day = alert.conditions.reduce(true) do |previous, condition|
+            day_value = source_cache[condition.source].public_send(condition.field, day)
+            converted_day_value = convert_value(condition, day_value)
 
-          days_of_week << day if converted_day_value.present? && comparison_lambda(condition).call(converted_day_value)
+            return false unless converted_day_value.present?
+
+            previous && comparison_lambda(condition).call(converted_day_value)
+          end
+
+          days_of_week << day if is_matching_day
         end
 
         days_of_week
+      end
+
+      def build_source_cache(alert)
+        alert.conditions.pluck(:source).each_with_object({}) do |source_name, cache|
+          source_class = configuration.source_klass(source_name).constantize
+          source = source_class.new(alert.subregion_id)
+          source.load
+          cache[source_name] = source
+
+          cache
+        end
       end
 
       def comparison_lambda(condition)
@@ -74,8 +89,10 @@ module Alerts
           field_values = configuration.field_values(condition.source, condition.field)
 
           field_values.find_index(value)
-        when 'Integer'
+        when 'Integer', 'Degree'
           value.to_i
+        when 'Float'
+          value.to_f
         else
           value
         end

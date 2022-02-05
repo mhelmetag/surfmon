@@ -4,7 +4,7 @@ require 'test_helper'
 
 class ConditionTest < ActiveSupport::TestCase
   test 'correct everything' do
-    condition_attributes = { alert: alerts(:really_good_sb), source: 'conditions', field: 'am_rating', comparator: 'gt', value: 'GOOD' }
+    condition_attributes = { alert: alerts(:good_sb), source: 'conditions', field: 'am_rating', comparator: 'gt', value: 'GOOD' }
     condition = Condition.new(condition_attributes)
 
     assert_equal(condition.save, true)
@@ -12,7 +12,7 @@ class ConditionTest < ActiveSupport::TestCase
   end
 
   test 'incorrect source' do
-    condition_attributes = { alert: alerts(:really_good_sb), source: 'salad', field: 'whatever', comparator: 'gt', value: '7' }
+    condition_attributes = { alert: alerts(:good_sb), source: 'salad', field: 'whatever', comparator: 'gt', value: '7' }
     condition = Condition.new(condition_attributes)
 
     assert_equal(condition.save, false)
@@ -20,7 +20,7 @@ class ConditionTest < ActiveSupport::TestCase
   end
 
   test 'incorrect field' do
-    condition_attributes = { alert: alerts(:really_good_sb), source: 'conditions', field: 'whatever', comparator: 'gt', value: 'tubular' }
+    condition_attributes = { alert: alerts(:good_sb), source: 'conditions', field: 'whatever', comparator: 'gt', value: 'tubular' }
     condition = Condition.new(condition_attributes)
 
     assert_equal(condition.save, false)
@@ -28,7 +28,7 @@ class ConditionTest < ActiveSupport::TestCase
   end
 
   test 'incorrect OrderedList value' do
-    condition_attributes = { alert: alerts(:really_good_sb), source: 'conditions', field: 'am_rating', comparator: 'gt', value: 'TUBULAR' }
+    condition_attributes = { alert: alerts(:good_sb), source: 'conditions', field: 'am_rating', comparator: 'gt', value: 'TUBULAR' }
     condition = Condition.new(condition_attributes)
 
     assert_equal(condition.save, false)
@@ -36,7 +36,7 @@ class ConditionTest < ActiveSupport::TestCase
   end
 
   test 'incorrect Integer value' do
-    condition_attributes = { alert: alerts(:really_good_sb), source: 'conditions', field: 'am_min_height', comparator: 'gt',
+    condition_attributes = { alert: alerts(:good_sb), source: 'conditions', field: 'am_min_height', comparator: 'gt',
                              value: 'salsa' }
     condition = Condition.new(condition_attributes)
 

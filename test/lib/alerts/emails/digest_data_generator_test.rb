@@ -31,6 +31,10 @@ class MockConditionsSource
     conditions[day].dig('pm', 'rating')
   end
 
+  def load
+    conditions
+  end
+
   private
 
   def conditions
@@ -49,13 +53,23 @@ module Alerts
         Timecop.return
       end
 
-      test '#generate' do
+      test '#generate single condition' do
         mock = MockConditionsSource.new
         Alerts::Sources::ConditionsSource.stub :new, mock do
           generator = DigestDataGenerator.new(users(:dudebro).id)
 
-          expected = [[alerts(:decent_sb).id, [6]]]
-          assert_equal(expected, generator.generate)
+          expected = [alerts(:decent_sb).id, [4, 5, 6]]
+          assert_includes(generator.generate, expected)
+        end
+      end
+
+      test '#generate multi conditions' do
+        mock = MockConditionsSource.new
+        Alerts::Sources::ConditionsSource.stub :new, mock do
+          generator = DigestDataGenerator.new(users(:dudebro).id)
+
+          expected = [alerts(:good_sb).id, [6]]
+          assert_includes(generator.generate, expected)
         end
       end
     end

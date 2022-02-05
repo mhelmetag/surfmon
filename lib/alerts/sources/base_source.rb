@@ -9,6 +9,10 @@ module Alerts
         @subregion_id = subregion_id
       end
 
+      def load
+        raise NotImplementedError, '#load must be implemented'
+      end
+
       private
 
       attr_reader :subregion_id

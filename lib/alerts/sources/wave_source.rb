@@ -17,6 +17,10 @@ module Alerts
         wave.dig(day, 'swells', 0, 'period')
       end
 
+      def load
+        wave
+      end
+
       private
 
       def wave

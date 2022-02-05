@@ -29,6 +29,10 @@ module Alerts
         conditions.dig(day, 'pm', 'rating')
       end
 
+      def load
+        conditions
+      end
+
       private
 
       def conditions

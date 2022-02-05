@@ -9,6 +9,12 @@ alerts = [
     conditions_attributes: [
       {
         source: 'conditions',
+        field: 'am_min_rating',
+        comparator: 'gt',
+        value: 'FAIR'
+      },
+      {
+        source: 'conditions',
         field: 'am_min_height',
         comparator: 'gt',
         value: '3'
@@ -24,6 +30,36 @@ alerts = [
         field: 'am_rating',
         comparator: 'gt',
         value: 'FAIR'
+      }
+    ]
+  },
+  {
+    name: 'Complexly good SB',
+    subregion_id: '58581a836630e24c44878fd4',
+    conditions_attributes: [
+      {
+        source: 'wave',
+        field: 'direction',
+        comparator: 'gt',
+        value: '29'
+      },
+      {
+        source: 'wave',
+        field: 'direction',
+        comparator: 'lt',
+        value: '101'
+      },
+      {
+        source: 'wave',
+        field: 'height',
+        comparator: 'gt',
+        value: '1.3'
+      },
+      {
+        source: 'wave',
+        field: 'period',
+        comparator: 'gt',
+        value: '2'
       }
     ]
   }

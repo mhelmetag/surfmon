@@ -1,13 +1,48 @@
-conditions_am_min_height_gt_4:
-  alert: really_good_sb  
-  source: conditions
-  field: am_min_height
-  comparator: gt
-  value: 4
-
 conditions_am_rating_gt_fair:
-  alert: decent_sb
+  alert: good_sb
   source: conditions
   field: am_rating
   comparator: gt
   value: FAIR
+
+conditions_am_min_height_gt_2:
+  alert: good_sb
+  source: conditions
+  field: am_min_height
+  comparator: gt
+  value: 2
+
+conditions_am_min_height_gt_4:
+  alert: decent_sb
+  source: conditions
+  field: pm_max_height
+  comparator: gt
+  value: 3
+
+wave_direction_gt_29:
+  alert: complexly_good_sb
+  source: wave
+  field: direction
+  comparator: gt
+  value: 29
+
+wave_direction_lt_101:
+  alert: complexly_good_sb
+  source: wave
+  field: direction
+  comparator: lt
+  value: 101
+
+wave_height_gt_1.3:
+  alert: complexly_good_sb
+  source: wave
+  field: height
+  comparator: gt
+  value: 1.3
+
+wave_period_gt_2:
+  alert: complexly_good_sb
+  source: wave
+  field: period
+  comparator: gt
+  value: 2
