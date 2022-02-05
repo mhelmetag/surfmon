@@ -5,6 +5,7 @@ users = [{ email: 'dudebro@example.com' }, { email: 'surfchick@example.com' }]
 alerts = [
   {
     name: 'Decent SB',
+    subregion_name: 'Santa Barbara',
     subregion_id: '58581a836630e24c44878fd4',
     conditions_attributes: [
       {
@@ -23,6 +24,7 @@ alerts = [
   },
   {
     name: 'Good ventucky',
+    subregion_name: 'Ventura',
     subregion_id: '58581a836630e24c4487900c',
     conditions_attributes: [
       {
@@ -35,6 +37,7 @@ alerts = [
   },
   {
     name: 'Complexly good SB',
+    subregion_name: 'Santa Barbara',
     subregion_id: '58581a836630e24c44878fd4',
     conditions_attributes: [
       {

@@ -1,14 +1,17 @@
 good_sb:
   user: dudebro
   name: Really good SB
+  subregion_name: Santa Barbara
   subregion_id: 58581a836630e24c44878fd4
 
 decent_sb:
   user: dudebro
   name: Decent SB
+  subregion_name: Santa Barbara
   subregion_id: 58581a836630e24c44878fd4
 
 complexly_good_sb:
   user: dudebro
   name: Complexly good SB
+  subregion_name: Santa Barbara
   subregion_id: 58581a836630e24c44878fd4
