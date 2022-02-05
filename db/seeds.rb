@@ -10,7 +10,7 @@ alerts = [
     conditions_attributes: [
       {
         source: 'conditions',
-        field: 'am_min_rating',
+        field: 'am_rating',
         comparator: 'gt',
         value: 'FAIR'
       },
@@ -71,5 +71,5 @@ alerts = [
 users.each do |user|
   user = User.create!(user)
 
-  alerts.each { |alert| Alert.create!(alert.merge(user:)) }
+  alerts.each { |alert| Alert.create!(alert.merge(user: user)) }
 end
