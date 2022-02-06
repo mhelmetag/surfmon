@@ -83,13 +83,13 @@ class Condition < ApplicationRecord
 
   def valid_integer
     Integer(value)
-  rescue ArgumentError
+  rescue ArgumentError, TypeError
     errors.add(:value, 'must be an integer')
   end
 
   def valid_float
     Float(value)
-  rescue ArgumentError
+  rescue ArgumentError, TypeError
     errors.add(:value, 'must be a decimal')
   end
 
