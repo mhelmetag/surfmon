@@ -21,7 +21,7 @@ def send_emails
 
   return if Rails.env.production? && (Time.now.in_time_zone('Pacific Time (US & Canada)').strftime('%A') != 'Sunday')
 
-  require 'alerts/emails/digest_data_generator'
+  require 'alerts/digest_data_generator'
 
   Rails.logger.debug 'alerts:send_emails - Starting task'
 

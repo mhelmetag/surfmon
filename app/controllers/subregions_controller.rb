@@ -29,7 +29,7 @@ class SubregionsController < ApplicationController
     subregion_hits = subregion_response.dig('hits', 'hits') || []
     subregion_hits.map do |subregion_hit|
       name = subregion_hit.dig('_source', 'name')
-      id = subregion_hit['_id']
+      id = subregion_hit.dig('_source', 'href').split('/')[5]
 
       [name, id]
     end
