@@ -3,7 +3,7 @@
 require 'test_helper'
 require 'minitest/autorun'
 
-require 'alerts/emails/digest_data_generator'
+require 'alerts/digest_data_generator'
 require 'alerts/sources/conditions_source'
 
 class MockConditionsSource
@@ -43,34 +43,32 @@ class MockConditionsSource
 end
 
 module Alerts
-  module Emails
-    class DigestDataGeneratorTest < ActiveSupport::TestCase
-      setup do
-        Timecop.freeze(Time.local(2022, 1, 20, 8, 0, 0, 8))
+  class DigestDataGeneratorTest < ActiveSupport::TestCase
+    setup do
+      Timecop.freeze(Time.local(2022, 1, 20, 8, 0, 0, 8))
+    end
+
+    teardown do
+      Timecop.return
+    end
+
+    test '#generate single condition' do
+      mock = MockConditionsSource.new
+      Alerts::ConditionsSource.stub :new, mock do
+        generator = DigestDataGenerator.new(users(:dudebro).id)
+
+        expected = [alerts(:decent_sb).id, [4, 5, 6]]
+        assert_includes(generator.generate, expected)
       end
+    end
 
-      teardown do
-        Timecop.return
-      end
+    test '#generate multi conditions' do
+      mock = MockConditionsSource.new
+      Alerts::ConditionsSource.stub :new, mock do
+        generator = DigestDataGenerator.new(users(:dudebro).id)
 
-      test '#generate single condition' do
-        mock = MockConditionsSource.new
-        Alerts::Sources::ConditionsSource.stub :new, mock do
-          generator = DigestDataGenerator.new(users(:dudebro).id)
-
-          expected = [alerts(:decent_sb).id, [4, 5, 6]]
-          assert_includes(generator.generate, expected)
-        end
-      end
-
-      test '#generate multi conditions' do
-        mock = MockConditionsSource.new
-        Alerts::Sources::ConditionsSource.stub :new, mock do
-          generator = DigestDataGenerator.new(users(:dudebro).id)
-
-          expected = [alerts(:good_sb).id, [6]]
-          assert_includes(generator.generate, expected)
-        end
+        expected = [alerts(:good_sb).id, [6]]
+        assert_includes(generator.generate, expected)
       end
     end
   end

@@ -3,9 +3,7 @@
 require 'test_helper'
 
 module Alerts
-  module Sources
-    class ConditionsSourceTest < ActiveSupport::TestCase
-      # webmock?
-    end
+  class ConditionsSourceTest < ActiveSupport::TestCase
+    # webmock?
   end
 end
