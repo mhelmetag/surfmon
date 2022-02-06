@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  resources :alerts
+  resources :alerts, except: [:show]
 
   # turbo conditions
   get 'conditions/fields', to: 'conditions#fields'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'conditions/add', to: 'conditions#add'
 
   # turbo search
-  get 'subregions/search', 'subregions#search'
+  get 'subregions/search', to: 'subregions#search'
 
   resources :users, only: %i[new create]
 end
