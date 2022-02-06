@@ -5,7 +5,7 @@
 
 sources:
   conditions:
-    class: Alerts::Sources::ConditionsSource
+    class: Alerts::ConditionsSource
     fields:
       am_min_height:
         type: Integer
@@ -47,10 +47,10 @@ sources:
           - GOOD_TO_EPIC
           - EPIC
   wave:
-    class: Alerts::Sources::WaveSource
+    class: Alerts::WaveSource
     fields:
       direction:
-        type: Float
+        type: Degree
       height:
         type: Float
       period:

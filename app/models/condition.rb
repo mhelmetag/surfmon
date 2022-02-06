@@ -66,8 +66,10 @@ class Condition < ApplicationRecord
     case field_type
     when 'OrderedList'
       valid_ordered_list
-    when 'Integer'
+    when 'Integer', 'Degree' # degree is basically an Integer but just has a different range
       valid_integer
+    when 'Float'
+      valid_float
     else
       errors.add(:value, 'is an unknown value')
     end
@@ -81,8 +83,14 @@ class Condition < ApplicationRecord
 
   def valid_integer
     Integer(value)
-  rescue ArgumentError
+  rescue ArgumentError, TypeError
     errors.add(:value, 'must be an integer')
+  end
+
+  def valid_float
+    Float(value)
+  rescue ArgumentError, TypeError
+    errors.add(:value, 'must be a decimal')
   end
 
   def configuration

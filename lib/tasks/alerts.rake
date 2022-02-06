@@ -21,7 +21,7 @@ def send_emails
 
   return if Rails.env.production? && (Time.now.in_time_zone('Pacific Time (US & Canada)').strftime('%A') != 'Sunday')
 
-  require 'alerts/emails/digest_data_generator'
+  require 'alerts/digest_data_generator'
 
   Rails.logger.debug 'alerts:send_emails - Starting task'
 
@@ -38,7 +38,7 @@ end
 def generate_and_send_email(user)
   Rails.logger.info "alerts:send_emails - Generating email for User##{user.id}"
 
-  alert_ids_and_days_of_week = Alerts::Emails::DigestDataGenerator.new(user.id).generate
+  alert_ids_and_days_of_week = Alerts::DigestDataGenerator.new(user.id).generate
 
   return unless alert_ids_and_days_of_week.any?
 

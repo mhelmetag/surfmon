@@ -12,41 +12,48 @@
   <div class="field">
     <label class="label">Name</label>
     <div class="control">
-      <%= form.text_field :name, class: 'input', placeholder: 'A cool alert name' %>
+      <%= form.text_field :name, class: 'input', placeholder: 'A descriptive alert name' %>
     </div>
   </div>
-  <div class="field">
-    <label class="label">Subregion ID</label>
-    <div class="control">
-      <%= form.text_field :subregion_id, class: 'input', placeholder: '58581a836630e24c4487900c' %>
+
+  <div data-controller="subregions">
+    <label class="label">Subregion</label>
+
+    <div class="field is-grouped is-grouped-multiline" >
+      <div class="control">
+        <input type="text" class="input" placeholder="Search for a subregion..." data-action="input->subregions#search" />
+      </div>
+
+      <div class="control">
+        <div class="select">
+          <select id="subregions_select" data-action="change->subregions#select">
+            <option value="" selected>Search results show here...</option>
+          </select>
+        </div>
+      </div>
     </div>
+
+    <div class="field" >
+      <div class="control">
+        <%= form.text_field :subregion_name, class: 'input', readonly: true %>
+      </div>
+    </div>
+
+    <%= form.hidden_field :subregion_id %>
   </div>
 
   <label class="label">Conditions</label>
-  <%= form.fields_for :conditions do |condition_form| %>
-    <div class="field is-grouped is-grouped-multiline" data-controller="conditions">
-      <div class="control">
-        <div class="select">
-          <%= condition_form.select :source, sources_for_select, { value: 'conditions' }, { data: { action: 'change->conditions#changeSource' } } %>
-        </div>
-      </div>
-      <div class="control">
-        <div class="select">
-          <%= condition_form.select :field, fields_for_select('conditions'), { value: 'am_max_height' }, { data: { action: 'change->conditions#changeField' } } %>
-        </div>
-      </div>
-      <div class="control">
-        <div class="select">
-          <%= condition_form.select :comparator, comparators_for_select %>
-        </div>
-      </div>
-      <div id="alert_conditions_<%= condition_form.index %>_value_input" class="control">
-        <%= render partial: 'value', locals: { condition_form: condition_form } %>
-      </div>
-    </div>
-  <% end %>
+  <div id="conditions" class="mb-2">
+    <% @alert.conditions.each_with_index do |condition, index| %>
+      <%= render partial: 'conditions/form', locals: { form: form, index: index, condition: condition } %>
+    <% end %>
+  </div>
 
-  <div class="field">
+
+  <div class="field is-grouped is-grouped-multiline">
+    <div class="control" data-controller="conditions">
+      <button class="button is-primary" data-action="click->conditions#add">Add Condition</button>
+    </div>
     <div class="control">
       <%= form.submit class: 'button is-link' %>
     </div>

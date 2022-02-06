@@ -2,13 +2,16 @@
 <% name = "alert[conditions_attributes][#{index}][value]" %>
 <% field_type = @alerts_configuration.field_type(source, field) %>
 <% case field_type %>
-<% when 'Integer', 'Float' %>
-  <%= number_field_tag id, nil, name: name, class: 'input', placeholder: '5', in: 1..100, step: 1 %>
+<% when 'Integer', 'Degree' %>
+  <% range = field_type == 'Integer' ? 1..100 : 0..360 %>
+  <%= number_field_tag id, value, name: name, class: 'input', placeholder: '5', in: range, step: 1 %>
+<% when 'Float' %>
+  <%= number_field_tag id, value, name: name, class: 'input', placeholder: '1.5', in: 1..100, step: 0.1 %>
 <% when 'OrderedList' %>
   <% values = values_for_select(source, field) %>
   <div class="select">
-    <%= select_tag id, options_for_select(values, values.first[1]), name: name %>
+    <%= select_tag id, options_for_select(values, value || values.first[1]), name: name %>
   </div>
 <% else %>
-  <%= text_field_tag id, nil, name: name, class: 'input', placeholder: 'Whatever' %>
+  <%= text_field_tag id, value, name: name, class: 'input', placeholder: 'Whatever' %>
 <% end %>

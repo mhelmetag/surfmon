@@ -11,7 +11,7 @@ module Alerts
     end
 
     test '#source_klass' do
-      assert_equal('Alerts::Sources::ConditionsSource', Alerts::Configuration.new.source_klass('conditions'))
+      assert_equal('Alerts::ConditionsSource', Alerts::Configuration.new.source_klass('conditions'))
     end
 
     test '#source_fields' do
