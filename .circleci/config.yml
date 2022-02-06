@@ -51,7 +51,7 @@ jobs:
           command: bundle check || bundle install
       - run:
           name: Rubocop check
-          command: git diff-tree -r --no-commit-id --name-only HEAD origin/main | xargs -r bundle exec rubocop --force-exclusion
+          command: git diff-tree -r --diff-filter=d --no-commit-id --name-only HEAD origin/main | xargs -r bundle exec rubocop --force-exclusion
       - run:
           name: Brakeman check
           command: bundle exec brakeman
