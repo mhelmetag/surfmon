@@ -1,31 +1,35 @@
 <%- title 'Surfmon > Alerts' %>
 
 <section class="section">
-  <div class="container columns is-multiline">
-    <div class="column is-full">
-      <%= link_to 'New Alert', new_alert_path, class: 'button is-primary' %>
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <%= link_to 'New Alert', new_alert_path, class: 'button is-primary' %>
+      </div>
     </div>
 
     <% if @alerts.any? %>
-      <% @alerts.each do |alert| %>
-        <div class="column is-full">
-          <div class="card">
-            <div class="card-content">
-              <p class="title">
-                <%= alert.name %>
-              </p>
-              <p class="subtitle">
-                <%= alert.conditions.first(3).map { |condition| condition.to_s }.join(', ') %>
-                <%= '...' if alert.conditions.size > 3 %>
-              </p>
+      <div class="columns is-multiline">
+        <% @alerts.each do |alert| %>
+          <div class="column is-full">
+            <div class="card">
+              <div class="card-content">
+                <p class="title">
+                  <%= alert.name %>
+                </p>
+                <p class="subtitle">
+                  <%= alert.conditions.first(3).map { |condition| condition.to_s }.join(', ') %>
+                  <%= '...' if alert.conditions.size > 3 %>
+                </p>
+              </div>
+              <footer class="card-footer">
+                <%= link_to 'Edit', edit_alert_path(alert), class: 'card-footer-item' %>
+                <%= link_to 'Delete', alert_path(alert), class: 'card-footer-item', data: { 'turbo-method': :delete } %>
+              </footer>
             </div>
-            <footer class="card-footer">
-              <%= link_to 'Edit', edit_alert_path(alert), class: 'card-footer-item' %>
-              <%= link_to 'Delete', alert_path(alert), class: 'card-footer-item', data: { 'turbo-method': :delete } %>
-            </footer>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% else %>
       <div>
         <p class="is-size-4">Try creating some alerts...</p>
