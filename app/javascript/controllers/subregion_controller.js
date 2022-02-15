@@ -8,20 +8,43 @@ export default class extends Controller {
     this.search = debounce(this.search.bind(this), 500);
   }
 
-  search(event) {
-    const query = event.target.value;
+  open(event) {
+    event.preventDefault();
 
-    get(`/subregions/search?query=${query}`, {
+    get(`/subregion/open`, {
       responseKind: "turbo-stream",
     });
   }
 
-  select(event) {
-    const $selection = event.target.selectedOptions[0];
+  search(event) {
+    const query = event.target.value;
+
+    get(`/subregion/search?query=${query}`, {
+      responseKind: "turbo-stream",
+    });
+  }
+
+  close(event) {
+    event.preventDefault();
+
+    const $subregionSearch = document.getElementById("subregion_search");
+
+    $subregionSearch.remove();
+  }
+
+  update(event) {
+    event.preventDefault();
+
+    const $subregionSelect = document.getElementById("subregion_select");
+    const $selection = $subregionSelect.selectedOptions[0];
     const $subregionName = document.getElementById("alert_subregion_name");
     const $subregionId = document.getElementById("alert_subregion_id");
 
     $subregionName.value = $selection.text;
     $subregionId.value = $selection.value;
+
+    const $subregionSearch = document.getElementById("subregion_search");
+
+    $subregionSearch.remove();
   }
 }

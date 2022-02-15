@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get 'conditions/value', to:  'conditions#value'
   get 'conditions/add', to: 'conditions#add'
 
-  # turbo search
-  get 'subregions/search', to: 'subregions#search'
+  # turbo subregion
+  get 'subregion/open', to: 'subregion#open'
+  get 'subregion/search', to: 'subregion#search'
 
   resources :users, only: %i[new create]
 end

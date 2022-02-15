@@ -16,26 +16,15 @@
     </div>
   </div>
 
-  <div data-controller="subregions">
+  <div id="subregion" data-controller="subregion">
     <label class="label">Subregion</label>
 
-    <div class="field is-grouped is-grouped-multiline" >
-      <div class="control">
-        <input type="text" class="input" placeholder="Search for a subregion..." data-action="input->subregions#search" />
-      </div>
-
-      <div class="control">
-        <div class="select">
-          <select id="subregions_select" data-action="change->subregions#select">
-            <option value="" selected>Search results show here...</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="field" >
+    <div class="field is-grouped" >
       <div class="control">
         <%= form.text_field :subregion_name, class: 'input', readonly: true %>
+      </div>
+      <div class="control">
+        <button class="button is-light" data-action="click->subregion#open">Search</button>
       </div>
     </div>
 
@@ -52,7 +41,7 @@
 
   <div class="field is-grouped is-grouped-multiline">
     <div class="control" data-controller="conditions">
-      <button class="button is-primary" data-action="click->conditions#add">Add Condition</button>
+      <button class="button is-light" data-action="click->conditions#add">Add Condition</button>
     </div>
     <div class="control">
       <%= form.submit class: 'button is-link' %>

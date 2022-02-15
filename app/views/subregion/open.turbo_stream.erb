@@ -1,0 +1,29 @@
+<%= turbo_stream.append 'subregion' do %>
+  <div id="subregion_search" class="modal is-active">
+    <div class="modal-background" data-action="click->subregion#close"></div>
+    <div class="modal-content">
+      <div class="box">
+        <div class="field" >
+          <div class="control">
+            <input type="text" class="input" placeholder="Search for a subregion..." data-action="input->subregion#search" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select id="subregion_select">
+                <option value="" selected>Search results show here...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <button class="button is-light" data-action="click->subregion#update">Update</button>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close" data-action="click->subregion#close"></button>
+  </div>
+<% end %>
