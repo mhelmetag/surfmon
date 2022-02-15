@@ -1,5 +1,6 @@
 <%= form.fields_for :conditions, condition, { child_index: index } do |condition_form| %>
-  <div class="field is-grouped is-grouped-multiline" data-controller="conditions">
+  <label class="label">Condition <%= index + 1 %></label>
+  <div class="condition field is-grouped is-grouped-multiline" data-controller="conditions">
     <div class="control">
       <div class="select">
         <%= condition_form.select :source, sources_for_select, { value: 'conditions' }, { data: { action: 'change->conditions#changeSource' } } %>

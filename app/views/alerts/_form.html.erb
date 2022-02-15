@@ -31,7 +31,6 @@
     <%= form.hidden_field :subregion_id %>
   </div>
 
-  <label class="label">Conditions</label>
   <div id="conditions" class="mb-2">
     <% @alert.conditions.each_with_index do |condition, index| %>
       <%= render partial: 'conditions/form', locals: { form: form, index: index, condition: condition } %>
