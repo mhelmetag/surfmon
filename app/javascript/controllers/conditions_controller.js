@@ -27,7 +27,7 @@ export default class extends Controller {
   add(event) {
     event.preventDefault();
 
-    const index = document.getElementById("conditions").childElementCount; // already +1 for zero based index
+    const index = document.getElementsByClassName("condition").length; // already +1 for zero based index
     const formUrl = new URL(event.target.form.action);
     let addUrl;
     if (formUrl.pathname === "/alerts") {

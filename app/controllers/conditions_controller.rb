@@ -27,7 +27,7 @@ class ConditionsController < ApplicationController
   end
 
   def add
-    @index = params[:index]
+    @index = params[:index].to_i
     @alert =
       if params[:alert_id]
         current_user.alerts.find(params[:alert_id])

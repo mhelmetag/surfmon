@@ -2,8 +2,14 @@
 
 require 'alerts/providers/surfline_provider'
 
-class SubregionsController < ApplicationController
+class SubregionController < ApplicationController
   before_action :require_user!
+
+  def open
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
 
   def search
     # should be formatted like [[name, id]]
