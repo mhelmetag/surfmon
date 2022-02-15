@@ -14,6 +14,8 @@ export default class extends Controller {
     get(`/subregion/open`, {
       responseKind: "turbo-stream",
     });
+
+    toggleModalMode();
   }
 
   search(event) {
@@ -27,9 +29,7 @@ export default class extends Controller {
   close(event) {
     event.preventDefault();
 
-    const $subregionSearch = document.getElementById("subregion_search");
-
-    $subregionSearch.remove();
+    removeSubregionSearch();
   }
 
   update(event) {
@@ -43,8 +43,20 @@ export default class extends Controller {
     $subregionName.value = $selection.text;
     $subregionId.value = $selection.value;
 
-    const $subregionSearch = document.getElementById("subregion_search");
-
-    $subregionSearch.remove();
+    removeSubregionSearch();
   }
 }
+
+const removeSubregionSearch = () => {
+  const $subregionSearch = document.getElementById("subregion_search");
+
+  $subregionSearch.remove();
+
+  toggleModalMode();
+};
+
+const toggleModalMode = () => {
+  const $html = document.getElementsByTagName("html")[0];
+
+  $html.classList.toggle("is-clipped");
+};
