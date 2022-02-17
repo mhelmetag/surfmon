@@ -24,7 +24,7 @@ class AlertsController < ApplicationController
     @alert = current_user.alerts.new(alert_params)
 
     if @alert.save
-      redirect_to alerts_path, flash: { notice: 'Alert created' }
+      redirect_to alerts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class AlertsController < ApplicationController
     @alert = current_user.alerts.find(params[:id])
 
     if @alert.update(alert_params)
-      redirect_to alerts_path, flash: { notice: 'Alert updated' }
+      redirect_to alerts_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -48,11 +48,9 @@ class AlertsController < ApplicationController
   def destroy
     @alert = current_user.alerts.find(params[:id])
 
-    if @alert.destroy
-      redirect_to alerts_path, flash: { notice: 'Alert deleted' }
-    else
-      redirect_to alerts_path, flash: { error: "Alert couldn't be deleted" }
-    end
+    @alert.destroy
+
+    redirect_to alerts_path
   end
 
   private

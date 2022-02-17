@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if challenge_accepted? && @user.save
       sign_in @user
-      redirect_to alerts_path, flash: { notice: 'Welcome!' }
+      redirect_to alerts_path
     else
       render :new, status: :unprocessable_entity
     end

@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   def require_user!
     return if current_user
 
-    redirect_to root_path, flash: { error: 'You need to sign in!' }
+    redirect_to root_path
   end
 end
