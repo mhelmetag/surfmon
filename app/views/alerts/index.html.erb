@@ -2,8 +2,11 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns">
-      <div class="column">
+    <div class="level">
+      <div class="level-right">
+        <h2 class="is-size-2">Alerts</h2>
+      </div>
+      <div class="level-left">
         <%= link_to 'New Alert', new_alert_path, class: 'button is-primary' %>
       </div>
     </div>
@@ -31,8 +34,14 @@
         <% end %>
       </div>
     <% else %>
-      <div>
-        <p class="is-size-4">Try creating some alerts...</p>
+      <div class="columns is-centered mt-3">
+        <div class="column has-text-centered">
+          <figure class="image is-128x128 is-inline-block">
+            <%= image_tag 'surf.png', alt: 'Surf sign' %>
+          </figure>
+          <h3 class="is-size-3 has-text-weight-medium">No Alerts</h3>
+          <p class="is-size-4">Try creating some! Click "New Alert"...</p>
+        </div>
       </div>
     <% end %>
   </div>
