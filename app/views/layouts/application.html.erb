@@ -39,6 +39,7 @@
           <div class="navbar-item">
             <div class="buttons">
               <% if current_user %>
+                <span class="pb-2 m-2"><%= current_user.email %></span>
                 <%= link_to 'Log Out', auth.sign_out_path, class: 'button is-light' %>
               <% else %>
                 <%= link_to 'Sign Up', new_user_path, class: 'button is-primary' %>
