@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rollbar.configure do |config|
-  config.access_token = ENV['ROLLBAR_ACCESS_TOKEN']
+  config.access_token = ENV.fetch('ROLLBAR_ACCESS_TOKEN', nil)
 
   # Here we'll disable in 'test' and 'development':
   config.enabled = false if Rails.env.test? || Rails.env.development?
