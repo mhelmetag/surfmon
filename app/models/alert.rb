@@ -24,5 +24,5 @@ class Alert < ApplicationRecord
 
   belongs_to :user
   has_many :conditions, dependent: :destroy
-  accepts_nested_attributes_for :conditions
+  accepts_nested_attributes_for :conditions, allow_destroy: true
 end

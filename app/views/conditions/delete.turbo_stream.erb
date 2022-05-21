@@ -1,0 +1,10 @@
+<%= turbo_stream.replace "condition_#{@index}" do %>
+  <% fields_for :alert, @alert do |form| %>
+    <%= form.fields_for :conditions, @condition, { child_index: @index } do |condition_form| %>
+      <div>
+        <p><del><%= @condition %></del><p>
+        <%= condition_form.hidden_field :_destroy, value: true %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

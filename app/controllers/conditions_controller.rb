@@ -41,6 +41,16 @@ class ConditionsController < ApplicationController
     end
   end
 
+  def delete
+    @index = params[:index].to_i
+    @alert = current_user.alerts.find(params[:alert_id])
+    @condition = @alert.conditions[@index]
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   private
 
   def set_alerts_configuration

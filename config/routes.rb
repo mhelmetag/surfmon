@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'conditions/fields', to: 'conditions#fields'
   get 'conditions/value', to:  'conditions#value'
   get 'conditions/add', to: 'conditions#add'
+  get 'conditions/delete', to: 'conditions#delete'
 
   # turbo subregion
   get 'subregion/open', to: 'subregion#open'
