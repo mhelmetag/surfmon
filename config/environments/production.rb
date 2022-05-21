@@ -69,9 +69,9 @@ Rails.application.configure do
     authentication: :plain,
     address: 'smtp.mailgun.org',
     port: 587,
-    domain: ENV['MAILGUN_DOMAIN'],
-    user_name: "postmaster@#{ENV['MAILGUN_DOMAIN']}",
-    password: ENV['MAILGUN_PASSWORD']
+    domain: ENV.fetch('MAILGUN_DOMAIN', nil),
+    user_name: "postmaster@#{ENV.fetch('MAILGUN_DOMAIN', nil)}",
+    password: ENV.fetch('MAILGUN_PASSWORD', nil)
   }
 
   config.action_mailer.default_url_options = { host: ENV.fetch('HOST', 'example.com'), protocol: 'https' }

@@ -65,7 +65,7 @@ class AlertsController < ApplicationController
       :name,
       :subregion_name,
       :subregion_id,
-      conditions_attributes: %i[id source field comparator value]
+      conditions_attributes: %i[id source field comparator value _destroy]
     )
   end
 end
