@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@0.0.10
+
 references:
   default_docker_ruby_executor: &default_docker_ruby_executor
     image: cimg/ruby:3.1.0
@@ -72,3 +75,10 @@ workflows:
       - test:
           requires:
             - build
+      - heroku/deploy-via-git:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only: main
