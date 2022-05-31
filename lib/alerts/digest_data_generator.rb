@@ -28,7 +28,7 @@ module Alerts
 
     def alert_ids_and_days_of_week(alerts)
       alerts.map do |alert|
-        days_of_week = resolve_conditions(alert) || []
+        days_of_week = resolve_conditions(alert)
 
         [alert.id, days_of_week]
       end
@@ -40,14 +40,18 @@ module Alerts
       days_of_week = []
 
       # skip 0 since that's Sun (today)
-      (1..7).each do |day|
+      # only 6 days since report is for 7 and
+      # we're skipping 1 (technically day 0)
+      (1..6).each do |day|
         is_matching_day = alert.conditions.reduce(true) do |previous, condition|
           day_value = source_cache[condition.source].public_send(condition.field, day)
           converted_day_value = convert_value(condition, day_value)
 
-          return false unless converted_day_value.present?
-
-          previous && comparison_lambda(condition).call(converted_day_value)
+          if converted_day_value.present?
+            previous && comparison_lambda(condition).call(converted_day_value)
+          else
+            false
+          end
         end
 
         days_of_week << day if is_matching_day
