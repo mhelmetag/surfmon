@@ -23,7 +23,7 @@ require 'alerts/configuration'
 class Condition < ApplicationRecord
   COMPARATORS = %w[eq gt lt].freeze
 
-  validates_presence_of :source, :field, :comparator, :value
+  validates :source, :field, :comparator, :value, presence: true
   validates :source, inclusion: { in: Alerts::Configuration.new.sources }
   validate :valid_field
   validate :valid_value
