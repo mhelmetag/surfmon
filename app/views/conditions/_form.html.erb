@@ -3,12 +3,12 @@
   <div class="condition field is-grouped is-grouped-multiline" id="condition_<%= index %>" data-controller="conditions">
     <div class="control">
       <div class="select">
-        <%= condition_form.select :source, sources_for_select, { value: 'conditions' }, { data: { action: 'change->conditions#changeSource' } } %>
+        <%= condition_form.select :source, sources_for_select(@alerts_configuration), { value: 'conditions' }, { data: { action: 'change->conditions#changeSource' } } %>
       </div>
     </div>
     <div class="control">
       <div class="select">
-        <%= condition_form.select :field, fields_for_select(condition_form.object.source || 'conditions'), { value: 'am_min_height' }, { data: { action: 'change->conditions#changeField' } } %>
+        <%= condition_form.select :field, fields_for_select(@alerts_configuration, condition_form.object.source || 'conditions'), { value: 'am_min_height' }, { data: { action: 'change->conditions#changeField' } } %>
       </div>
     </div>
     <div class="control">

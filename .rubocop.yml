@@ -1,3 +1,7 @@
+inherit_from: .rubocop_todo.yml
+
+require: rubocop-rails
+
 AllCops:
   NewCops: enable
   Exclude:
@@ -35,4 +39,11 @@ Style/MixinUsage:
     - bin/*
 
 Style/HashSyntax:
+  Enabled: false
+
+# rails
+
+# it's weird on references
+# https://github.com/rubocop/rubocop-rails/issues/237
+Rails/NotNullColumn:
   Enabled: false

@@ -18,7 +18,7 @@
 #
 
 class Alert < ApplicationRecord
-  validates_presence_of :name, :subregion_id, :subregion_name
+  validates :name, :subregion_id, :subregion_name, presence: true
 
   strip_attributes
 
