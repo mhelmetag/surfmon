@@ -8,6 +8,7 @@ ruby '3.1.0'
 gem 'bootsnap', require: false
 gem 'httparty'
 gem 'importmap-rails'
+gem 'nokogiri'
 gem 'passwordless'
 gem 'pg', '~> 1.1'
 gem 'propshaft'

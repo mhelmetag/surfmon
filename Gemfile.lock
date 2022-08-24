@@ -244,6 +244,7 @@ DEPENDENCIES
   debug
   httparty
   importmap-rails
+  nokogiri
   passwordless
   pg (~> 1.1)
   propshaft
