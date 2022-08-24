@@ -13,9 +13,11 @@ module Surfline
       alerts_to_backfill = Alert.where(provider_search_id: nil, provider_search_name: nil)
 
       alerts_to_backfill.each do |alert|
-        primary_spot = Surfline::PimarySpotFinder.new(alert.subregion_id).find
+        primary_spot = Surfline::PrimarySpotFinder.new(alert.subregion_id).find
 
+        # rubocop:disable Rails/Output
         puts "Primary spot found! Backfilling #{alert.subregion_name} with #{primary_spot[:name]}"
+        # rubocop:enable Rails/Output
 
         alert.update(provider_search_id: primary_spot[:id], provider_search_name: primary_spot[:name])
       end
