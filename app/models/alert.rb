@@ -4,13 +4,16 @@
 #
 # Table name: alerts
 #
-#  id             :integer          not null, primary key
-#  name           :string           not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  subregion_id   :string           not null
-#  user_id        :integer          not null
-#  subregion_name :string           not null
+#  id                   :bigint           not null, primary key
+#  name                 :string           not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  subregion_id         :string           not null
+#  user_id              :bigint           not null
+#  subregion_name       :string           not null
+#  provider_type        :string           default("surfline_spot"), not null
+#  provider_search_id   :string
+#  provider_search_name :string
 #
 # Indexes
 #

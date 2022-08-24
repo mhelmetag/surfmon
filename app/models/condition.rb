@@ -4,12 +4,12 @@
 #
 # Table name: conditions
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  source     :string           not null
 #  field      :string           not null
 #  comparator :string           not null
 #  value      :string           not null
-#  alert_id   :integer          not null
+#  alert_id   :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
