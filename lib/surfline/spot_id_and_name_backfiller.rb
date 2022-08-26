@@ -8,6 +8,11 @@ module Surfline
     # for backfilling provider_search_id and provider_search_name on
     # surfline_spot provider type alerts when alerts were only
     # meant for one provider type and were for surfline subregions
+    #
+    # 8/25/22
+    # surfline is pretty good at blocking in heroku in some cases
+    # so this doesn't work there for some reason...
+    # onto some other more lame way to backfill
 
     def run
       alerts_to_backfill = Alert.where(provider_search_id: nil, provider_search_name: nil)
