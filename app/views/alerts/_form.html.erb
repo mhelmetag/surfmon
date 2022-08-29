@@ -21,14 +21,14 @@
 
     <div class="field is-grouped" >
       <div class="control">
-        <%= form.text_field :subregion_name, class: 'input', readonly: true %>
+        <%= form.text_field :provider_search_name, class: 'input', readonly: true %>
       </div>
       <div class="control">
         <button class="button is-light" data-action="click->subregion#open">Search</button>
       </div>
     </div>
 
-    <%= form.hidden_field :subregion_id %>
+    <%= form.hidden_field :provider_search_id %>
   </div>
 
   <div id="conditions" class="mb-2">

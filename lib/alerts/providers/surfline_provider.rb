@@ -11,14 +11,14 @@ module Alerts
       self.class.get('/search/site', options)
     end
 
-    def conditions(subregion_id)
-      options = { query: { subregionId: subregion_id, days: 8 }, headers: headers }
+    def conditions(spot_id)
+      options = { query: { spotId: spot_id, days: 8 }, headers: headers }
 
       self.class.get('/kbyg/regions/forecasts/conditions', options)
     end
 
-    def wave(subregion_id)
-      options = { query: { subregionId: subregion_id, days: 8 }, headers: headers }
+    def wave(spot_id)
+      options = { query: { spotId: spot_id, days: 8 }, headers: headers }
 
       self.class.get('/kbyg/regions/forecasts/wave', options)
     end

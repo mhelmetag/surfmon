@@ -37,8 +37,10 @@ export default class extends Controller {
 
     const $subregionSelect = document.getElementById("subregion_select");
     const $selection = $subregionSelect.selectedOptions[0];
-    const $subregionName = document.getElementById("alert_subregion_name");
-    const $subregionId = document.getElementById("alert_subregion_id");
+    const $subregionName = document.getElementById(
+      "alert_provider_search_name"
+    );
+    const $subregionId = document.getElementById("alert_provider_search_id");
 
     $subregionName.value = $selection.text;
     $subregionId.value = $selection.value;

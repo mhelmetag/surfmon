@@ -5,8 +5,8 @@ users = [{ email: 'dudebro@example.com' }, { email: 'surfchick@example.com' }]
 alerts = [
   {
     name: 'Decent SB',
-    subregion_name: 'Santa Barbara',
-    subregion_id: '58581a836630e24c44878fd4',
+    provider_search_name: 'Rincon',
+    provider_search_id: '5842041f4e65fad6a7708814',
     conditions_attributes: [
       {
         source: 'conditions',
@@ -24,8 +24,8 @@ alerts = [
   },
   {
     name: 'Good ventucky',
-    subregion_name: 'Ventura',
-    subregion_id: '58581a836630e24c4487900c',
+    provider_search_name: 'Ventura Point',
+    provider_search_id: '584204204e65fad6a77096b1',
     conditions_attributes: [
       {
         source: 'conditions',
@@ -37,8 +37,8 @@ alerts = [
   },
   {
     name: 'Complexly good SB',
-    subregion_name: 'Santa Barbara',
-    subregion_id: '58581a836630e24c44878fd4',
+    provider_search_name: 'Rincon',
+    provider_search_id: '5842041f4e65fad6a7708814',
     conditions_attributes: [
       {
         source: 'wave',
