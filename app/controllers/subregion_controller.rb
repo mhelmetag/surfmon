@@ -31,11 +31,11 @@ class SubregionController < ApplicationController
     response = Alerts::SurflineProvider.new.search(params[:query])
     return ['Error! Does not compute!', ''] unless response.code == 200
 
-    subregion_response = response.parsed_response[1]
-    subregion_hits = subregion_response.dig('hits', 'hits') || []
-    subregion_hits.map do |subregion_hit|
-      name = subregion_hit.dig('_source', 'name')
-      id = subregion_hit.dig('_source', 'href').split('/')[5] # https://www.surfline.com/surf-forecasts/south-san-diego/58581a836630e24c4487900d
+    spot_response = response.parsed_response[0]
+    spot_hits = spot_response.dig('hits', 'hits') || []
+    spot_hits.map do |spot_hit|
+      name = spot_hit.dig('_source', 'name')
+      id = spot_hit.dig('_source', 'href').split('/')[5] # https://www.surfline.com/surf-forecasts/south-san-diego/58581a836630e24c4487900d
 
       [name, id]
     end
