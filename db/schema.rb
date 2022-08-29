@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_052911) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_29_052329) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,12 +18,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_052911) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "subregion_id", null: false
+    t.string "subregion_id"
     t.bigint "user_id", null: false
-    t.string "subregion_name", null: false
+    t.string "subregion_name"
     t.string "provider_type", default: "surfline_spot", null: false
-    t.string "provider_search_id"
-    t.string "provider_search_name"
+    t.string "provider_search_id", null: false
+    t.string "provider_search_name", null: false
     t.index ["user_id"], name: "index_alerts_on_user_id"
   end
 

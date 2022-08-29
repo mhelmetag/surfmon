@@ -37,7 +37,7 @@ module Alerts
 
     def conditions
       @conditions ||= begin
-        response = SurflineProvider.new.conditions(subregion_id)
+        response = SurflineProvider.new.conditions(spot_id)
         raise Alerts::SourceError, 'Received a non-200 code from surfline' unless response.code == 200
 
         response.parsed_response.dig('data', 'conditions')

@@ -25,7 +25,7 @@ module Alerts
 
     def wave
       @wave ||= begin
-        response = SurflineProvider.new.wave(subregion_id)
+        response = SurflineProvider.new.wave(spot_id)
         raise Alerts::SourceError, 'Received a non-200 code from surfline' unless response.code == 200
 
         response.parsed_response.dig('data', 'wave')

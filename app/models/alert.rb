@@ -8,12 +8,12 @@
 #  name                 :string           not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  subregion_id         :string           not null
+#  subregion_id         :string
 #  user_id              :bigint           not null
-#  subregion_name       :string           not null
+#  subregion_name       :string
 #  provider_type        :string           default("surfline_spot"), not null
-#  provider_search_id   :string
-#  provider_search_name :string
+#  provider_search_id   :string           not null
+#  provider_search_name :string           not null
 #
 # Indexes
 #
@@ -21,7 +21,7 @@
 #
 
 class Alert < ApplicationRecord
-  validates :name, :subregion_id, :subregion_name, presence: true
+  validates :name, :provider_search_id, :provider_search_name, presence: true
 
   strip_attributes
 

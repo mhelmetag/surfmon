@@ -63,7 +63,7 @@ module Alerts
     def build_source_cache(alert)
       alert.conditions.pluck(:source).each_with_object({}) do |source_name, cache|
         source_class = configuration.source_klass(source_name).constantize
-        source = source_class.new(alert.subregion_id)
+        source = source_class.new(alert.provider_search_id)
         source.load
         cache[source_name] = source
 
