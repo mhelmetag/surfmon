@@ -35,7 +35,7 @@ class SubregionController < ApplicationController
     spot_hits = spot_response.dig('hits', 'hits') || []
     spot_hits.map do |spot_hit|
       name = spot_hit.dig('_source', 'name')
-      id = spot_hit.dig('_source', 'href').split('/')[5] # https://www.surfline.com/surf-forecasts/south-san-diego/58581a836630e24c4487900d
+      id = spot_hit.dig('_source', 'href').split('/')[5] # https://www.surfline.com/surf-report/sandspit/5842041f4e65fad6a7708966
 
       [name, id]
     end
