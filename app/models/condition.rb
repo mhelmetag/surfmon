@@ -24,7 +24,6 @@ class Condition < ApplicationRecord
   COMPARATORS = %w[eq gt lt].freeze
 
   validates :source, :field, :comparator, :value, presence: true
-  validates :source, inclusion: { in: Alerts::Configuration.new.sources }
   validate :valid_field
   validate :valid_value
   validates :comparator, inclusion: { in: COMPARATORS }
@@ -35,18 +34,18 @@ class Condition < ApplicationRecord
 
   def to_s
     [
-      I18n.t(['configuration', 'sources', source, 'name'].join('.')),
-      I18n.t(['configuration', 'sources', source, 'fields', field, 'name'].join('.')),
+      I18n.t(['configuration', alert.provider_type, 'sources', source, 'name'].join('.')),
+      I18n.t(['configuration', alert.provider_type, 'sources', source, 'fields', field, 'name'].join('.')),
       I18n.t(comparator, scope: 'conditions.comparators'),
       localized_value
     ].join(' ')
   end
 
   def localized_value
-    field_type = configuration.field_type(source, field)
+    field_type = configuration.field_type(alert.provider_type, source, field)
 
     if field_type == 'OrderedList'
-      I18n.t(['configuration', 'sources', source, 'fields', field, 'values', value].join('.'))
+      I18n.t(['configuration', alert.provider_type, 'sources', source, 'fields', field, 'values', value].join('.'))
     else
       value
     end
@@ -54,14 +53,20 @@ class Condition < ApplicationRecord
 
   private
 
+  def valid_source
+    sources = configuration.sources(alert.provider_type)
+
+    errors.add(:source, 'is not included in the list') unless sources&.include?(source)
+  end
+
   def valid_field
-    source_fields = configuration.source_fields(source)
+    source_fields = configuration.source_fields(alert.provider_type, source)
 
     errors.add(:field, 'is not included in the list') unless source_fields&.include?(field)
   end
 
   def valid_value
-    field_type = configuration.field_type(source, field)
+    field_type = configuration.field_type(alert.provider_type, source, field)
 
     case field_type
     when 'OrderedList'
@@ -76,7 +81,7 @@ class Condition < ApplicationRecord
   end
 
   def valid_ordered_list
-    field_values = configuration&.field_values(source, field)
+    field_values = configuration&.field_values(alert.provider_type, source, field)
 
     errors.add(:value, 'is not included in the list') unless field_values&.include?(value)
   end

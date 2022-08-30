@@ -2,24 +2,28 @@
 
 module Alerts
   class Configuration
-    def sources
-      configuration['sources'].keys
+    def providers
+      configuration.keys
     end
 
-    def source_klass(source)
-      configuration.dig('sources', source, 'class')
+    def sources(provider)
+      configuration.dig(provider, 'sources')&.keys || []
     end
 
-    def source_fields(source)
-      configuration.dig('sources', source, 'fields')&.keys || []
+    def source_klass(provider, source)
+      configuration.dig(provider, 'sources', source, 'class')
     end
 
-    def field_type(source, field)
-      configuration.dig('sources', source, 'fields', field, 'type')
+    def source_fields(provider, source)
+      configuration.dig(provider, 'sources', source, 'fields')&.keys || []
     end
 
-    def field_values(source, field)
-      configuration.dig('sources', source, 'fields', field, 'values') || []
+    def field_type(provider, source, field)
+      configuration.dig(provider, 'sources', source, 'fields', field, 'type')
+    end
+
+    def field_values(provider, source, field)
+      configuration.dig(provider, 'sources', source, 'fields', field, 'values') || []
     end
 
     private
