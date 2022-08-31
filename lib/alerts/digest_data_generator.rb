@@ -45,7 +45,7 @@ module Alerts
       (1..6).each do |day|
         is_matching_day = alert.conditions.reduce(true) do |previous, condition|
           day_value = source_cache[condition.source].public_send(condition.field, day)
-          converted_day_value = convert_value(condition, day_value)
+          converted_day_value = convert_value(alert, condition, day_value)
 
           if converted_day_value.present?
             previous && comparison_lambda(alert, condition).call(converted_day_value)
