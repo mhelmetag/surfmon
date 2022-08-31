@@ -24,6 +24,7 @@ class Condition < ApplicationRecord
   COMPARATORS = %w[eq gt lt].freeze
 
   validates :source, :field, :comparator, :value, presence: true
+  validate :valid_source
   validate :valid_field
   validate :valid_value
   validates :comparator, inclusion: { in: COMPARATORS }
