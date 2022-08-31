@@ -3,55 +3,56 @@
 # attribute types can be Integer or OrderedList
 # OrderedList attributes need to have values sorted by the value (lowest to highest)
 
-sources:
-  conditions:
-    class: Alerts::ConditionsSource
-    fields:
-      am_min_height:
-        type: Integer
-      am_max_height:
-        type: Integer
-      am_rating:
-        type: OrderedList
-        values:
-          - NONE
-          - FLAT
-          - VERY_POOR
-          - POOR
-          - POOR_TO_FAIR
-          - FAIR
-          - FAIR_TO_GOOD
-          - GOOD
-          - VERY_GOOD
-          - GOOD_TO_EPIC
-          - EPIC
-      pm_min_height:
-        name: PM Min Height
-        type: Integer
-      pm_max_height:
-        name: PM Max Height
-        type: Integer
-      pm_rating:
-        name: PM Rating
-        type: OrderedList
-        values:
-          - NONE
-          - FLAT
-          - VERY_POOR
-          - POOR
-          - POOR_TO_FAIR
-          - FAIR
-          - FAIR_TO_GOOD
-          - GOOD
-          - VERY_GOOD
-          - GOOD_TO_EPIC
-          - EPIC
-  wave:
-    class: Alerts::WaveSource
-    fields:
-      direction:
-        type: Degree
-      height:
-        type: Float
-      period:
-        type: Integer
+surfline_spot:
+  sources:
+    conditions:
+      class: Alerts::ConditionsSource
+      fields:
+        am_min_height:
+          type: Integer
+        am_max_height:
+          type: Integer
+        am_rating:
+          type: OrderedList
+          values:
+            - NONE
+            - FLAT
+            - VERY_POOR
+            - POOR
+            - POOR_TO_FAIR
+            - FAIR
+            - FAIR_TO_GOOD
+            - GOOD
+            - VERY_GOOD
+            - GOOD_TO_EPIC
+            - EPIC
+        pm_min_height:
+          name: PM Min Height
+          type: Integer
+        pm_max_height:
+          name: PM Max Height
+          type: Integer
+        pm_rating:
+          name: PM Rating
+          type: OrderedList
+          values:
+            - NONE
+            - FLAT
+            - VERY_POOR
+            - POOR
+            - POOR_TO_FAIR
+            - FAIR
+            - FAIR_TO_GOOD
+            - GOOD
+            - VERY_GOOD
+            - GOOD_TO_EPIC
+            - EPIC
+    wave:
+      class: Alerts::WaveSource
+      fields:
+        direction:
+          type: Degree
+        height:
+          type: Float
+        period:
+          type: Integer

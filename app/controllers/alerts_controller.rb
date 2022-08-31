@@ -17,6 +17,7 @@ class AlertsController < ApplicationController
 
   def new
     @alert = current_user.alerts.new
+    @provider_type = @alert.provider_type = params[:provider_type]
     @alert.conditions.build
   end
 
@@ -32,6 +33,7 @@ class AlertsController < ApplicationController
 
   def edit
     @alert = current_user.alerts.find(params[:id])
+    @provider_type = alert.provider_type
     @alert.conditions.build if @alert.conditions.blank?
   end
 
@@ -63,6 +65,7 @@ class AlertsController < ApplicationController
     params.require(:alert).permit(
       :id,
       :name,
+      :provider_type,
       :provider_search_name,
       :provider_search_id,
       conditions_attributes: %i[id source field comparator value _destroy]

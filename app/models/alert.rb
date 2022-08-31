@@ -20,8 +20,11 @@
 #  index_alerts_on_user_id  (user_id)
 #
 
+require 'alerts/configuration'
+
 class Alert < ApplicationRecord
   validates :name, :provider_search_id, :provider_search_name, presence: true
+  validates :provider_type, inclusion: { in: Alerts::Configuration.new.providers }
 
   strip_attributes
 

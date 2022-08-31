@@ -1,17 +1,20 @@
 good_sb:
   user: dudebro
   name: Really good SB
+  provider_type: surfline_spot
   provider_search_name: Rincon
   provider_search_id: 5842041f4e65fad6a7708814
 
 decent_sb:
   user: dudebro
   name: Decent SB
+  provider_type: surfline_spot
   provider_search_name: Rincon
   provider_search_id: 5842041f4e65fad6a7708814
 
 complexly_good_sb:
   user: dudebro
   name: Complexly good SB
+  provider_type: surfline_spot
   provider_search_name: Rincon
   provider_search_id: 5842041f4e65fad6a7708814

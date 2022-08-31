@@ -45,10 +45,10 @@ module Alerts
       (1..6).each do |day|
         is_matching_day = alert.conditions.reduce(true) do |previous, condition|
           day_value = source_cache[condition.source].public_send(condition.field, day)
-          converted_day_value = convert_value(condition, day_value)
+          converted_day_value = convert_value(alert, condition, day_value)
 
           if converted_day_value.present?
-            previous && comparison_lambda(condition).call(converted_day_value)
+            previous && comparison_lambda(alert, condition).call(converted_day_value)
           else
             false
           end
@@ -62,7 +62,7 @@ module Alerts
 
     def build_source_cache(alert)
       alert.conditions.pluck(:source).each_with_object({}) do |source_name, cache|
-        source_class = configuration.source_klass(source_name).constantize
+        source_class = configuration.source_klass(alert.provider_type, source_name).constantize
         source = source_class.new(alert.provider_search_id)
         source.load
         cache[source_name] = source
@@ -71,8 +71,8 @@ module Alerts
       end
     end
 
-    def comparison_lambda(condition)
-      converted_condition_value = convert_value(condition, condition.value)
+    def comparison_lambda(alert, condition)
+      converted_condition_value = convert_value(alert, condition, condition.value)
 
       case condition.comparator
       when 'eq'
@@ -84,12 +84,12 @@ module Alerts
       end
     end
 
-    def convert_value(condition, value)
-      field_type = configuration.field_type(condition.source, condition.field)
+    def convert_value(alert, condition, value)
+      field_type = configuration.field_type(alert.provider_type, condition.source, condition.field)
 
       case field_type
       when 'OrderedList'
-        field_values = configuration.field_values(condition.source, condition.field)
+        field_values = configuration.field_values(alert.provider_type, condition.source, condition.field)
 
         field_values.find_index(value)
       when 'Integer', 'Degree'

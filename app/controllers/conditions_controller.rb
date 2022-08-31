@@ -8,8 +8,9 @@ class ConditionsController < ApplicationController
 
   def fields
     @index = params[:index]
+    @provider_type = params[:provider_type]
     @source = params[:source]
-    @field = @alerts_configuration.source_fields(@source).first
+    @field = @alerts_configuration.source_fields(@provider_type, @source).first
 
     respond_to do |format|
       format.turbo_stream
@@ -18,6 +19,7 @@ class ConditionsController < ApplicationController
 
   def value
     @index = params[:index]
+    @provider_type = params[:provider_type]
     @source = params[:source]
     @field = params[:field]
 
@@ -34,6 +36,7 @@ class ConditionsController < ApplicationController
       else
         current_user.alerts.new
       end
+    @provider_type = @alert.provider_type
     @condition = @alert.conditions.build
 
     respond_to do |format|
