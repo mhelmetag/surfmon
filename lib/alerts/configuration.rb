@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-Dir[Rails.root.join('lib/alerts/sources/*.rb')].each { |file| require file }
-Dir[Rails.root.join('lib/alerts/searchers/*.rb')].each { |file| require file }
+Dir[Rails.root.join('lib/alerts/sources/**/*.rb')].each { |file| require file }
+Dir[Rails.root.join('lib/alerts/searchers/**/*.rb')].each { |file| require file }
 
 module Alerts
   class Configuration

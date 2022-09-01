@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'alerts/sources/base_source'
-require 'alerts/providers/surfline_provider'
+require 'alerts/providers/surfline_spot_provider'
 
 module Alerts
   module Surfline

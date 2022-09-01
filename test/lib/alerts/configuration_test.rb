@@ -4,6 +4,7 @@ require 'test_helper'
 
 require 'alerts/configuration'
 require 'alerts/sources/surfline/conditions_source'
+require 'alerts/sources/surfline/wave_source'
 
 module Alerts
   class ConfigurationTest < ActiveSupport::TestCase

@@ -2,6 +2,9 @@
 
 require 'alerts/configuration'
 
+Dir[Rails.root.join('lib/alerts/sources/**/*.rb')].each { |file| require file }
+Dir[Rails.root.join('lib/alerts/searchers/**/*.rb')].each { |file| require file }
+
 module Alerts
   class DigestDataGenerator
     def initialize(user_id)
