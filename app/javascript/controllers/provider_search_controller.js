@@ -11,7 +11,9 @@ export default class extends Controller {
   open(event) {
     event.preventDefault();
 
-    get(`/provider_search/open`, {
+    const providerType = document.getElementById("alert_provider_type").value;
+
+    get(`/provider_search/open?provider_type=${providerType}`, {
       responseKind: "turbo-stream",
     });
 

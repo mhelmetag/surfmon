@@ -4,7 +4,7 @@ require 'test_helper'
 require 'minitest/autorun'
 
 require 'alerts/digest_data_generator'
-require 'alerts/sources/conditions_source'
+require 'alerts/sources/surfline/conditions_source'
 
 class MockConditionsSource
   def am_min_height(day)
@@ -54,7 +54,7 @@ module Alerts
 
     test '#generate single condition' do
       mock = MockConditionsSource.new
-      Alerts::ConditionsSource.stub :new, mock do
+      Alerts::Surfline::ConditionsSource.stub :new, mock do
         generator = DigestDataGenerator.new(users(:dudebro).id)
 
         expected = [alerts(:decent_sb).id, [4, 5, 6]]
@@ -64,7 +64,7 @@ module Alerts
 
     test '#generate multi conditions' do
       mock = MockConditionsSource.new
-      Alerts::ConditionsSource.stub :new, mock do
+      Alerts::Surfline::ConditionsSource.stub :new, mock do
         generator = DigestDataGenerator.new(users(:dudebro).id)
 
         expected = [alerts(:good_sb).id, [6]]

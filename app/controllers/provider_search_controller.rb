@@ -6,6 +6,8 @@ class ProviderSearchController < ApplicationController
   before_action :require_user!
 
   def open
+    @provider_type = params[:provider_type]
+
     respond_to do |format|
       format.turbo_stream
     end

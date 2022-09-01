@@ -10,6 +10,11 @@ en:
       eq: is equal to
       gt: is greater than
       lt: is less than
+  alerts_form:
+    search:
+      search_for: "Search for a %{record_name}..."
+      record_name:
+        surfline_spot: spot
   configuration:
     surfline_spot:
       sources:
