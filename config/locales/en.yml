@@ -15,6 +15,7 @@ en:
       search_for: "Search for a %{record_name}..."
       record_name:
         surfline_spot: spot
+        cdip: buoy
   configuration:
     surfline_spot:
       sources:
@@ -59,6 +60,17 @@ en:
                 EPIC: Epic
         wave:
           name: Wave
+          fields:
+            direction:
+              name: Direction
+            height:
+              name: Height
+            period:
+              name: Period
+    cdip:
+      sources:
+        swell:
+          name: Swell
           fields:
             direction:
               name: Direction

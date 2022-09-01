@@ -36,7 +36,7 @@ class ConditionsController < ApplicationController
       else
         current_user.alerts.new
       end
-    @provider_type = @alert.provider_type
+    @provider_type = params[:provider_type]
     @condition = @alert.conditions.build
 
     respond_to do |format|

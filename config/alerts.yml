@@ -58,3 +58,17 @@ surfline_spot:
           type: Float
         period:
           type: Integer
+
+cdip:
+  search:
+    class: Alerts::CdipBuoySearcher
+  sources:
+    swell:
+      class: Alerts::Cdip::SwellSource
+      fields:
+        direction:
+          type: Degree
+        height:
+          type: Float
+        period:
+          type: Integer
