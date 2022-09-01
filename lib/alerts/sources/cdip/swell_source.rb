@@ -24,31 +24,36 @@ module Alerts
       private
 
       def swell
-        @swell ||= begin
-          uri = URI.parse("https://thredds.cdip.ucsd.edu/thredds/ncss/cdip/model/MOP_alongshore/VE#{provider_search_id}_ecmwf_fc.nc")
-          uri.query = URI.encode_www_form(
-            {
-              req: 'station',
-              var: %w[waveDp waveHs waveTp],
-              time_start: Time.now.utc,
-              time_end: Time.now.utc + 7.days,
-              accept: 'csv'
-            }
-          )
-          data = HTTParty.get(uri.to_s).body
-          # direction is 4
-          # height is 5 (meters)
-          # period is 6
-          readings = data.split("\n")[1..].to_a
-
-          readings.each_slice(5).map do |sliced_readings|
-            {
-              direction: average(items_at_csv_index(sliced_readings, 4)).to_i,
-              height: meters_to_feet(average(items_at_csv_index(sliced_readings, 5))).round(2),
-              period: average(items_at_csv_index(sliced_readings, 6)).to_i
-            }
-          end
+        @swell ||= readings.each_slice(5).map do |sliced_readings|
+          {
+            direction: average(items_at_csv_index(sliced_readings, 4)).to_i,
+            height: meters_to_feet(average(items_at_csv_index(sliced_readings, 5))).round(2),
+            period: average(items_at_csv_index(sliced_readings, 6)).to_i
+          }
         end
+      end
+
+      def readings
+        # an array of arrays (days x columns)
+        # direction is [4]
+        # height is [5] (meters)
+        # period is [6]
+
+        # this forecast is weird... there seem to be many forecasts depending on the spot...
+        # we might need to make a mapping
+        uri = URI.parse("https://thredds.cdip.ucsd.edu/thredds/ncss/cdip/model/MOP_alongshore/VE#{provider_search_id}_ecmwf_fc.nc")
+        uri.query = URI.encode_www_form(
+          {
+            req: 'station',
+            var: %w[waveDp waveHs waveTp],
+            time_start: Time.now.utc,
+            time_end: Time.now.utc + 7.days,
+            accept: 'csv'
+          }
+        )
+        data = HTTParty.get(uri.to_s).body
+
+        data.split("\n")[1..].to_a
       end
 
       def items_at_csv_index(array, index)
