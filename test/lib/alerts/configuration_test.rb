@@ -3,6 +3,7 @@
 require 'test_helper'
 
 require 'alerts/configuration'
+require 'alerts/sources/surfline/conditions_source'
 
 module Alerts
   class ConfigurationTest < ActiveSupport::TestCase
@@ -11,7 +12,7 @@ module Alerts
     end
 
     test '#source_klass' do
-      assert_equal('Alerts::ConditionsSource', Alerts::Configuration.new.source_klass('surfline_spot', 'conditions'))
+      assert_equal(Alerts::Surfline::ConditionsSource, Alerts::Configuration.new.source_klass('surfline_spot', 'conditions'))
     end
 
     test '#source_fields' do

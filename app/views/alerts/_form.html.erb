@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div id="subregion" data-controller="subregion">
+  <div id="modal" data-controller="provider_search">
     <label class="label">Spot</label>
 
     <div class="field is-grouped" >
@@ -26,7 +26,7 @@
         <%= form.text_field :provider_search_name, class: 'input', readonly: true %>
       </div>
       <div class="control">
-        <button class="button is-light" data-action="click->subregion#open">Search</button>
+        <button class="button is-light" data-action="click->provider_search#open">Search</button>
       </div>
     </div>
 

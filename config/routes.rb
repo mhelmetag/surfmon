@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   get 'conditions/add', to: 'conditions#add'
   get 'conditions/delete', to: 'conditions#delete'
 
-  # turbo subregion
-  get 'subregion/open', to: 'subregion#open'
-  get 'subregion/search', to: 'subregion#search'
+  # turbo provider search
+  get 'provider_search/open', to: 'provider_search#open'
+  get 'provider_search/search', to: 'provider_search#search'
 
   resources :users, only: %i[new create]
 end

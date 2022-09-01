@@ -4,9 +4,11 @@
 # OrderedList attributes need to have values sorted by the value (lowest to highest)
 
 surfline_spot:
+  search:
+    class: Alerts::SurflineSpotSearcher
   sources:
     conditions:
-      class: Alerts::ConditionsSource
+      class: Alerts::Surfline::ConditionsSource
       fields:
         am_min_height:
           type: Integer
@@ -48,7 +50,7 @@ surfline_spot:
             - GOOD_TO_EPIC
             - EPIC
     wave:
-      class: Alerts::WaveSource
+      class: Alerts::Surfline::WaveSource
       fields:
         direction:
           type: Degree
