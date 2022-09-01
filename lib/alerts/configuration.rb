@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
+Dir[Rails.root.join('lib/alerts/sources/**/*.rb')].each { |file| require file }
+Dir[Rails.root.join('lib/alerts/searchers/**/*.rb')].each { |file| require file }
+
 module Alerts
   class Configuration
+    def search_klass(provider)
+      configuration.dig(provider, 'search', 'class').constantize
+    end
+
     def providers
       configuration.keys
     end
@@ -11,7 +18,7 @@ module Alerts
     end
 
     def source_klass(provider, source)
-      configuration.dig(provider, 'sources', source, 'class')
+      configuration.dig(provider, 'sources', source, 'class').constantize
     end
 
     def source_fields(provider, source)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Alerts
-  class SurflineProvider
+  class SurflineSpotProvider
     include HTTParty
     base_uri 'https://services.surfline.com'
 

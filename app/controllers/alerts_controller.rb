@@ -33,7 +33,7 @@ class AlertsController < ApplicationController
 
   def edit
     @alert = current_user.alerts.find(params[:id])
-    @provider_type = alert.provider_type
+    @provider_type = @alert.provider_type
     @alert.conditions.build if @alert.conditions.blank?
   end
 
