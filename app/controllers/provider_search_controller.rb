@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'alerts/configuration'
+Dir[Rails.root.join('lib/alerts/searchers/**/*.rb')].each { |file| require file }
 
 class ProviderSearchController < ApplicationController
   before_action :require_user!

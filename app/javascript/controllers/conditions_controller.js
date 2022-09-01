@@ -36,13 +36,14 @@ export default class extends Controller {
     event.preventDefault();
 
     const index = document.getElementsByClassName("condition").length; // already +1 for zero based index
+    const providerType = document.getElementById("alert_provider_type").value;
     const formUrl = new URL(event.target.form.action);
     let addUrl;
     if (formUrl.pathname === "/alerts") {
-      addUrl = `/conditions/add?index=${index}`;
+      addUrl = `/conditions/add?index=${index}&provider_type=${providerType}`;
     } else {
       const alertId = formUrl.pathname.split("/")[2]; // /alerts/1
-      addUrl = `/conditions/add?index=${index}&alert_id=${alertId}`;
+      addUrl = `/conditions/add?index=${index}&provider_type=${providerType}&alert_id=${alertId}`;
     }
 
     get(addUrl, {

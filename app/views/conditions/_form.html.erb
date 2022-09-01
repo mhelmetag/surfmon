@@ -3,12 +3,12 @@
   <div class="condition field is-grouped is-grouped-multiline" id="condition_<%= index %>" data-controller="conditions">
     <div class="control">
       <div class="select">
-        <%= condition_form.select :source, sources_for_select(@alerts_configuration, @provider_type), { value: 'conditions' }, { data: { action: 'change->conditions#changeSource' } } %>
+        <%= condition_form.select :source, sources_for_select(@alerts_configuration, @provider_type), { value: @alerts_configuration.sources(@provider_type).first }, { data: { action: 'change->conditions#changeSource' } } %>
       </div>
     </div>
     <div class="control">
       <div class="select">
-        <%= condition_form.select :field, fields_for_select(@alerts_configuration, @provider_type, condition_form.object.source || 'conditions'), { value: 'am_min_height' }, { data: { action: 'change->conditions#changeField' } } %>
+        <%= condition_form.select :field, fields_for_select(@alerts_configuration, @provider_type, condition_form.object.source || @alerts_configuration.sources(@provider_type).first), { value: @alerts_configuration.source_fields(@provider_type, @alerts_configuration.sources(@provider_type).first).first }, { data: { action: 'change->conditions#changeField' } } %>
       </div>
     </div>
     <div class="control">
@@ -17,7 +17,15 @@
       </div>
     </div>
     <div class="control">
-      <%= render partial: 'conditions/value', locals: { index: condition_form.index, provider_type: @provider_type, source: condition_form.object.source || 'conditions', field: condition_form.object.field || 'am_min_height', value: condition_form.object.value } %>
+      <%= 
+        render partial: 'conditions/value',
+        locals: {
+          index: condition_form.index,
+          provider_type: @provider_type,
+          source: condition_form.object.source || @alerts_configuration.sources(@provider_type).first,
+          field: condition_form.object.field || @alerts_configuration.source_fields(@provider_type, @alerts_configuration.sources(@provider_type).first).first,
+          value: condition_form.object.value
+        } %>
     </div>
     <% unless form.object.conditions.first.id == condition_form.object.id %>
       <div class="control">
