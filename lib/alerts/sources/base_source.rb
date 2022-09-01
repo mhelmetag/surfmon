@@ -4,8 +4,8 @@ module Alerts
   class SourceError < StandardError; end
 
   class BaseSource
-    def initialize(spot_id)
-      @spot_id = spot_id
+    def initialize(provider_search_id)
+      @provider_search_id = provider_search_id
     end
 
     def load
@@ -14,6 +14,6 @@ module Alerts
 
     private
 
-    attr_reader :spot_id
+    attr_reader :provider_search_id
   end
 end
