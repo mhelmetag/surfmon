@@ -3,9 +3,14 @@
 require 'application_system_test_case'
 
 class UsersTest < ApplicationSystemTestCase
-  test 'visiting the index' do
-    visit users_url
+  test 'sign up' do
+    visit new_user_path
 
-    assert_selector 'h1', text: 'Users'
+    fill_in 'user[email]', with: 'surfergirl@example.com'
+    fill_in 'challenge', with: 'Kelly Slater'
+
+    click_on 'Create User'
+
+    assert_current_path alerts_path
   end
 end

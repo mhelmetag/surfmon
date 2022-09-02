@@ -10,14 +10,14 @@
 
 <%= form_with model: @user do |form| %>
   <div class="field">
-    <label class="label">Email</label>
+    <label class="label" for="user[email]">Email</label>
     <div class="control">
       <%= form.email_field :email, class: 'input', placeholder: 'dudebro@example.com' %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Who is the GOAT in surfing?</label>
+    <label class="label" for="challenge">Who is the GOAT in surfing?</label>
     <div class="control">
       <input name="challenge" type="text" class="input" placeholder="It might be Kelly Slater...">
     </div>
