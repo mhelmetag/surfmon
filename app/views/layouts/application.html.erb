@@ -39,10 +39,10 @@
           <div class="navbar-item">
             <div class="buttons">
               <% if current_user %>
-                <%= link_to 'Log Out', auth.sign_out_path, class: 'button is-light' %>
+                <%= link_to 'Sign Out', auth.sign_out_path, class: 'button is-light' %>
               <% else %>
                 <%= link_to 'Sign Up', new_user_path, class: 'button is-primary' %>
-                <%= link_to 'Log In', auth.sign_in_path, class: 'button is-light' %>
+                <%= link_to 'Sign In', auth.sign_in_path, class: 'button is-light' %>
               <% end %>
             </div>
           </div>

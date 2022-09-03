@@ -17,7 +17,7 @@
     <% if @alerts.any? %>
       <div class="columns is-multiline">
         <% @alerts.each do |alert| %>
-          <div class="column is-full">
+          <div class="column is-full" id="<%= "alert_#{alert.id}" %>">
             <div class="card">
               <div class="card-content">
                 <p class="title">
@@ -43,7 +43,7 @@
             <%= image_tag 'surf.png', alt: 'Surf sign' %>
           </figure>
           <h3 class="is-size-3 has-text-weight-medium">No Alerts</h3>
-          <p class="is-size-4">Try creating some! Click "New Alert"...</p>
+          <p class="is-size-4">Try creating some! Click on one of the "New" buttons...</p>
         </div>
       </div>
     <% end %>
