@@ -1,13 +1,13 @@
-<%- title 'Surfmon > Log In' %>
+<%- title 'Surfmon > Sign In' %>
 
 <section class="section" style="max-width: 60vw">
   <div class="container">
-    <h2 class="is-size-2">Log In</h2>
+    <h2 class="is-size-2">Sign In</h2>
     <%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: false } do |f| %>
       <% email_field_name = :"passwordless[#{@email_field}]" %>
 
       <div class="field">
-        <label class="label">Email</label>
+        <label class="label" for="<%= email_field_name %>">Email</label>
         <div class="control">
           <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), class: 'input', placeholder: 'dudebro@example.com' %>
         </div>
