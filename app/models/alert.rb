@@ -8,9 +8,7 @@
 #  name                 :string           not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  subregion_id         :string
 #  user_id              :bigint           not null
-#  subregion_name       :string
 #  provider_type        :string           default("surfline_spot"), not null
 #  provider_search_id   :string           not null
 #  provider_search_name :string           not null
