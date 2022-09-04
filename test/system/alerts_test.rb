@@ -17,11 +17,13 @@ class AlertsTest < ApplicationSystemTestCase
     within '.modal-content' do
       fill_in 'search', with: 'Ja'
 
-      sleep(0.50) # wait for debounce/turbo
+      sleep(0.25) # wait for debounce/turbo
 
       select 'Jalama', from: 'provider_search_select'
       click_on 'Update'
     end
+
+    sleep(0.25) # wait for debounce/turbo
 
     fill_in 'alert[conditions_attributes][0][value]', with: '2'
 
