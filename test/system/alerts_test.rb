@@ -23,7 +23,7 @@ class AlertsTest < ApplicationSystemTestCase
       click_on 'Update'
     end
 
-    sleep(0.25) # wait for debounce/turbo
+    sleep(0.25) # wait for turbo
 
     fill_in 'alert[conditions_attributes][0][value]', with: '2'
 
