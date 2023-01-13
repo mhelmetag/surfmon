@@ -41,10 +41,7 @@ module Alerts
 
       days_of_week = []
 
-      # skip 0 since that's Sun (today)
-      # only 6 days since report is for 7 and
-      # we're skipping 1 (technically day 0)
-      (1..6).each do |day|
+      7.times do |day|
         is_matching_day = alert.conditions.reduce(true) do |previous, condition|
           day_value = source_cache[condition.source].public_send(condition.field, day)
           converted_day_value = convert_value(alert, condition, day_value)
