@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 require: rubocop-rails
 
 AllCops:
@@ -46,4 +44,7 @@ Style/HashSyntax:
 # it's weird on references
 # https://github.com/rubocop/rubocop-rails/issues/237
 Rails/NotNullColumn:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
   Enabled: false
