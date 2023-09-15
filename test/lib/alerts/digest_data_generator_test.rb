@@ -57,7 +57,7 @@ module Alerts
       Alerts::Surfline::ConditionsSource.stub :new, mock do
         generator = DigestDataGenerator.new(users(:dudebro).id)
 
-        expected = [alerts(:decent_sb).id, [4, 5, 6]]
+        expected = [alerts(:decent_sb).id, [4]]
         assert_includes(generator.generate, expected)
       end
     end
@@ -67,7 +67,7 @@ module Alerts
       Alerts::Surfline::ConditionsSource.stub :new, mock do
         generator = DigestDataGenerator.new(users(:dudebro).id)
 
-        expected = [alerts(:good_sb).id, [6]]
+        expected = [alerts(:good_sb).id, [4]]
         assert_includes(generator.generate, expected)
       end
     end

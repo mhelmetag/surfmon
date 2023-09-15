@@ -7,8 +7,9 @@ Dir[Rails.root.join('lib/alerts/searchers/**/*.rb')].each { |file| require file 
 
 module Alerts
   class DigestDataGenerator
-    def initialize(user_id)
+    def initialize(user_id, days_to_check = 5)
       @user = User.find(user_id)
+      @days_to_check = days_to_check
       @configuration = Alerts::Configuration.new
     end
 
@@ -20,7 +21,7 @@ module Alerts
 
     private
 
-    attr_reader :user, :configuration
+    attr_reader :user, :days_to_check, :configuration
 
     def filtered_alert_ids_and_days_of_week(alerts)
       alert_ids_and_days_of_week(alerts).select do |_alert_id, days_of_week|
@@ -41,7 +42,9 @@ module Alerts
 
       days_of_week = []
 
-      7.times do |day|
+      days_to_check.times do |day| # TODO: Make this configurable
+        next if day.zero? # Skip today
+
         is_matching_day = alert.conditions.reduce(true) do |previous, condition|
           day_value = source_cache[condition.source].public_send(condition.field, day)
           converted_day_value = convert_value(alert, condition, day_value)

@@ -12,13 +12,13 @@ module Alerts
     end
 
     def conditions(spot_id)
-      options = { query: { spotId: spot_id, days: 7 }, headers: headers }
+      options = { query: { spotId: spot_id, days: 5 }, headers: headers }
 
       self.class.get('/kbyg/regions/forecasts/conditions', options)
     end
 
     def wave(spot_id)
-      options = { query: { spotId: spot_id, days: 7 }, headers: headers }
+      options = { query: { spotId: spot_id, days: 5 }, headers: headers }
 
       self.class.get('/kbyg/regions/forecasts/wave', options)
     end

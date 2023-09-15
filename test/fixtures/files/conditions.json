@@ -135,7 +135,7 @@
           "plus": false,
           "humanRelation": "Waist to chest high",
           "occasionalHeight": null,
-          "rating": "FAIR"
+          "rating": "FAIR_TO_GOOD"
         },
         "pm": {
           "maxHeight": 4,
@@ -144,87 +144,6 @@
           "humanRelation": "Waist to shoulder high",
           "occasionalHeight": 5,
           "rating": "FAIR_TO_GOOD"
-        }
-      },
-      {
-        "timestamp": 1643097600,
-        "utcOffset": -8,
-        "forecastDay": "2022-01-25",
-        "forecaster": {
-          "name": "Kevin Wallis",
-          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
-        },
-        "human": true,
-        "observation": "Nice pulse of WNW swell tops out. Tide is pretty favorable all day and wind could be too.",
-        "am": {
-          "maxHeight": 5,
-          "minHeight": 3,
-          "plus": false,
-          "humanRelation": "Waist to head high",
-          "occasionalHeight": null,
-          "rating": "FAIR"
-        },
-        "pm": {
-          "maxHeight": 5,
-          "minHeight": 3,
-          "plus": false,
-          "humanRelation": "Waist to head high",
-          "occasionalHeight": null,
-          "rating": "FAIR"
-        }
-      },
-      {
-        "timestamp": 1643184000,
-        "utcOffset": -8,
-        "forecastDay": "2022-01-26",
-        "forecaster": {
-          "name": "Kevin Wallis",
-          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
-        },
-        "human": true,
-        "observation": "Refresh of WNW swell should level things off, down a notch from Tuesday. Shape still a little walled at times. Could be another favorable morning for conditions and the afternoon doesn't look too bad.",
-        "am": {
-          "maxHeight": 4,
-          "minHeight": 3,
-          "plus": false,
-          "humanRelation": "Waist to chest high",
-          "occasionalHeight": null,
-          "rating": "FAIR_TO_GOOD"
-        },
-        "pm": {
-          "maxHeight": 4,
-          "minHeight": 3,
-          "plus": false,
-          "humanRelation": "Waist to chest high",
-          "occasionalHeight": null,
-          "rating": "FAIR"
-        }
-      },
-      {
-        "timestamp": 1643270400,
-        "utcOffset": -8,
-        "forecastDay": "2022-01-27",
-        "forecaster": {
-          "name": "Kevin Wallis",
-          "avatar": "https://www.gravatar.com/avatar/7b56791847d5971c1dce71f35fba259d?d=mm"
-        },
-        "human": true,
-        "observation": "Continued decrease in surf as WNW swell trends down. Conditions currently look best in the morning. Stay tuned. ",
-        "am": {
-          "maxHeight": 3,
-          "minHeight": 2,
-          "plus": true,
-          "humanRelation": "Waist to stomach high",
-          "occasionalHeight": null,
-          "rating": "FAIR"
-        },
-        "pm": {
-          "maxHeight": 3,
-          "minHeight": 2,
-          "plus": false,
-          "humanRelation": "Thigh to waist high",
-          "occasionalHeight": null,
-          "rating": "FAIR"
         }
       }
     ]

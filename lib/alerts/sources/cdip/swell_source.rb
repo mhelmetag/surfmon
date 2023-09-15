@@ -39,15 +39,13 @@ module Alerts
         # height is [5] (meters)
         # period is [6]
 
-        # this forecast is weird... there seem to be many forecasts depending on the spot...
-        # we might need to make a mapping
         uri = URI.parse("https://thredds.cdip.ucsd.edu/thredds/ncss/cdip/model/MOP_alongshore/VE#{provider_search_id}_ecmwf_fc.nc")
         uri.query = URI.encode_www_form(
           {
             req: 'station',
             var: %w[waveDp waveHs waveTp],
             time_start: Time.now.utc,
-            time_end: Time.now.utc + 7.days,
+            time_end: Time.now.utc + 5.days,
             accept: 'csv'
           }
         )
