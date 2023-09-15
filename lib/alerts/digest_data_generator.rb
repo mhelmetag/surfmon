@@ -38,8 +38,6 @@ module Alerts
     end
 
     def resolve_conditions(alert)
-      binding.irb if alert.id == 7
-
       source_cache = build_source_cache(alert)
 
       days_of_week = []
