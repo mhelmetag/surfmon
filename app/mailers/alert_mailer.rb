@@ -8,11 +8,11 @@ class AlertMailer < ApplicationMailer
 
       [alert.name, days_of_week.map { |n| (n - 1).days.from_now.strftime('%A') }.join(', ')]
     end
-    mail(to: @user.email, subject: 'Surfmon weekly surf alerts 🏄')
+    mail(to: @user.email, subject: 'Surfmon semi-weekly surf alerts 🏄')
   end
 
   def digest_error(user_id)
     @user = User.find(user_id)
-    mail(to: @user.email, subject: 'Ouch! Surfmon bailed creating your weekly surf alerts')
+    mail(to: @user.email, subject: 'Ouch! Surfmon bailed creating your semi-weekly surf alerts')
   end
 end

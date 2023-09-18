@@ -32,8 +32,8 @@ def send_emails
   # Grab all users
   # for each user, grab all alerts
   # group alerts into ones with a matching condition
-  # if the condition is met for any of the days of the week
-  # track the alerts and all days of the week that the condition is met
+  # if the condition is met for any of the days of the week (for the days to check)
+  # track the alerts and days of the week that the condition is met
   # serialize the email as follows
   # alert 1: Monday, Wednesday
   # alert 2: Saturday
