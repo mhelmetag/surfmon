@@ -15,7 +15,10 @@ end
 def test_send_emails
   # Just send me an email
 
-  return if prod_and_day_incorrect?
+  unless should_run?
+    puts 'alerts:test_send_emails - Not running today'
+    return
+  end
 
   require 'alerts/digest_data_generator'
 
@@ -36,7 +39,10 @@ def send_emails
   # alert 2: Saturday
   # etc
 
-  return if prod_and_day_incorrect?
+  unless should_run?
+    puts 'alerts:send_emails - Not running today'
+    return
+  end
 
   require 'alerts/digest_data_generator'
 
@@ -52,13 +58,13 @@ def send_emails
   puts 'alerts:send_emails - Task complete'
 end
 
-def prod_and_day_incorrect?
+def should_run?
+  # Run any time if not production
+  return true unless Rails.env.production?
+
   # When in production, only run on Sundays and Thursdays
-  Rails.env.production? &&
-    (
-      Time.now.in_time_zone('Pacific Time (US & Canada)').strftime('%A') != 'Sunday' ||
-      Time.now.in_time_zone('Pacific Time (US & Canada)').strftime('%A') != 'Thursday'
-    )
+  Time.now.in_time_zone('Pacific Time (US & Canada)').strftime('%A') == 'Sunday' ||
+    Time.now.in_time_zone('Pacific Time (US & Canada)').strftime('%A') == 'Thursday'
 end
 
 def generate_and_send_email(user)
