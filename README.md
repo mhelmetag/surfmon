@@ -6,6 +6,8 @@ Custom surf alerts
 
 Surfmon is a little like IFTTT (If This Then That) for surfing. I wanted a tool for building my own custom surf alerts so that I don't have to monitor the charts. If you've thought "I would love an email for the days that the swell direction is between A and B degrees, the period is C and the swell height is D" then Surfmon might be for you!
 
+**Archival Notice:** I lost interest so I took the site down and mothballed this project. If you'd like to see a demo, you can check out [this Youtube video](https://www.youtube.com/watch?v=zvkiDv9zaII). Also, if you'd like me to revive this project, you can email me at support@maxworld.tech.
+
 ## Setup
 
 You'll need:
